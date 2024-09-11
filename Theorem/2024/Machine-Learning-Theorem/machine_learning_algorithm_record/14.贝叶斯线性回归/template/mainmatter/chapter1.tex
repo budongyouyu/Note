@@ -1,0 +1,107 @@
+\chapter{Bayes Linear Regression Background}
+
+贝叶斯线性回归和基于最小二乘法的线性回归本质上都是线性回归，只不过是从不同的角度去看。贝叶斯方法在线性回归中的主要任务是
+
+下面的推导中，我们会展示如何从概率分布来描述线性回归。
+
+\section{从概率密度函数的角度认识最小二乘估计}
+
+关于线性回归问题求解模型参数$\mathcal{W}$时，采用的方法是最小二乘估计
+\begin{equation}
+    \mathcal{L}(\omega)=\sum_{i=1}^{N}\Vert \mathcal{W}^T x^{(i)}-y^{(i)}\Vert^2
+\end{equation}
+
+并通过最小二乘估计，求解模型参数$\omega$的矩阵形式表达
+\begin{equation}
+    \mathcal{W}=(\mathcal{X}^T\mathcal{X})^{-1}\mathcal{X}^T\mathcal{Y}
+\end{equation}
+
+矩阵表达有以下弊端
+
+\begin{enumerate}[itemindent=2em]
+    \item $\mathcal{X}^T\mathcal{X}$是一个$p\times p$的对称矩阵，它至少时半正定矩阵，但一定不是正定矩阵，从而导致$(\mathcal{X}^T\mathcal{X})^{-1}$可能是不可求的。
+    \item 由于$\mathcal{X}$是样本集合，如果$X$的样本量很大，会导致$\mathcal{X}^T\mathcal{X}$的计算成本很大；
+\end{enumerate}
+
+从概率密度函数的角度观察，\textbf{最小二乘估计的本质是极大似然估计}：给定样本$x^{(i)}$和对应标签$y^{(i)}$之间的关联关系，可以得到$P(y^{(i)}|x^){(i)}$的概率分布，也就是说实际上就是
+$y^{(i)}$和$\mathcal{W}^Tx^{(i)}$的距离服从一个随机分布，建立数学模型如下
+\begin{mdframed}
+    \begin{equation}
+        y^{(i)}=\mathcal{W}^Tx^{(i)}+\epsilon
+    \end{equation}
+\end{mdframed}
+
+其中$\epsilon\sim \mathcal{N}(\mu,\sigma^2)$，通过这样构造我们可以估计
+\begin{equation}
+    P(y^{(i)}|x^{(i)},\mathcal{W})\sim \mathcal{N}(\mathcal{W}^Tx^{(i)}+\mu,\sigma^2)
+\end{equation}
+
+构建极大似然函数
+\begin{equation}
+    \begin{aligned}
+        \mathcal{L}(\mathcal{W})&=\log\prod_{i=1}^{N}P(y^{(i)}|x^{(i)},\mathcal{W})\\
+        &=\sum_{i=1}^{N}\log\left[ \frac{1}{\sigma\sqrt{2\pi}}exp\left( \frac{[\ y^{(i)}-(\mathcal{W}^Tx^{(i)}+\mu) \ ]^2}{2\sigma^2} \right) \right]
+    \end{aligned}
+\end{equation}
+
+所以转成了一个优化问题
+\begin{equation}
+    \mathcal{W}=\arg\max\limits_{\mathcal{W}}\ \mathcal{L}(\mathcal{W})
+\end{equation}
+\begin{equation}
+    \mathcal{W}\propto \arg\max\limits_{\mathcal{W}}\ \sum_{i=1}^{N}\ \left[ y^{(i)}-(\mathcal{W}^Tx^{(i)}+\mu) \right]^2
+\end{equation}
+
+注意到如果$\mu=0$那就是最小二乘法的形式。
+
+\section{从概率密度函数的角度认识过拟合和正则化}
+
+针对最小二乘估计的过拟合问题，引入正则化，常见的正则化有以下方式
+\begin{enumerate}[itemindent=2em]
+    \item Lasso回归($\mathcal{L}_1$正则化)；
+    \item 岭回归($\mathcal{L}_2$正则化)
+\end{enumerate}
+
+从概率密度函数的角度考虑\textbf{基于正则化的最小二乘估计，可以将其视作关于$\mathcal{W}$的最大后验估计}
+\begin{equation}
+    \mathcal{W}_{MAP}=arg\max_{\mathcal{W}}\ \frac{P(\mathcal{Y}|\mathcal{W})\cdot P(\mathcal{W})}{P(\mathcal{Y})}\propto arg\max_{\mathcal{W}}\  P(\mathcal{Y}|\mathcal{W})\cdot P(\mathcal{W})
+\end{equation}
+
+由于样本之间独立同分布，因而有
+\begin{equation}
+    \mathcal{W}_{MAP}\propto arg\max_{\mathcal{W}}\  \left[ \log\ \prod\limits_{i=1}^{N}P(y^{(i)}|\mathcal{W})\cdot P(\mathcal{W}) \right]
+\end{equation}
+
+令先验分布$P(\mathcal{W})\sim \mathcal{N}(\mu_0,\sigma^2_0)$，将$P(\mathcal{Y}|\mathcal{W})\sim \mathcal{N}(\mathcal{W}^T\mathcal{X},\sigma^2)$一同代入上式，有
+\begin{equation}
+    \hat{\mathcal{W}}_{MAP}=arg\ \max\limits_{\mathcal{W}}\ \sum\limits_{i=1}^{N}\ \left[ (y^{(i)}-\mathcal{W}^T x^{(i)})^2+\frac{\sigma^2}{\sigma^2_0}\  (\mathcal{W}-\mu_0)^2 \right]
+\end{equation}
+
+令$\lambda=\frac{\sigma^2}{\sigma^2_0}$，$\mu_0=0$，上式转化为
+
+\begin{equation}
+    \hat{\mathcal{W}}_{MAP}=arg\ \max\limits_{\mathcal{W}}\ \sum\limits_{i=1}^{N}\ \left[ (y^{(i)}-\mathcal{W}^T x^{(i)})^2+\lambda\ \Vert \mathcal{W}\Vert^2_2 \right]
+\end{equation}
+
+这刚好是$\mathcal{L}_2$正则化的线性回归，如果想要Lasso正则化，则用拉普拉斯分布替换高斯分布。
+
+\section{小结}
+
+前面的推导主要说明了从概率分布角度的线性回归和一般的线性回归是一个问题，并且引出了我们的贝叶斯线性回归的模型
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            &f(x^{(i)})=\mathcal{W}x^{(i)}\\
+            &y^{(i)}=f(x^{(i)})+\epsilon
+        \end{aligned}
+    \right.
+\end{equation}
+
+
+其中$\epsilon\sim \mathcal{N}(\mu,\sigma^2)$，
+\begin{enumerate}[itemindent=2em]
+    \item 推断(\textsl{Inference})：求解后验概率$P(\mathcal{W}|Data)$
+    \item 预测(\textsl{Predict})：基于后验概率对未知样本的情况进行预测求$P(\hat{\mathcal{X}}|Data)$
+\end{enumerate}
+
+接下来两个小章节主要是看如何在这个模型上作推断和预测。

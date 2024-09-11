@@ -1,0 +1,382 @@
+\chapter{\textsl{Hilbert Space Exescrise}}
+
+稍微记录一下：度量和内积的关系在于，由于度量描述的是距离，对于任意两个点之间的距离都应该用一个正数表示，内积是有可能是负的，代表角度大于90度；度量是一个泛函而内积是一个双线性泛函，就是说度量不一定满足线性；同时度量遵守的是三角不等式量定义了“距离”并且必须满足最基本的几何直觉，即从一处到另一处的直接距离不能超过绕道的距离和，而内积遵守平行四边形不等式，内积不仅定义了距离，还定义了角度和正交性。平行四边形不等式是由向量加法和内积定义的范数之间的关系决定的，它描述了内积空间中的几何对称性。
+
+\textbf{总结：}由度量$d(\cdot,\cdot)$诱导的范数只能描述距离，而内积诱导的范数可以描述角度和距离。
+\begin{equation}
+    (x,y)=\Vert x\Vert\Vert y\Vert\cos\theta
+\end{equation}
+
+
+\section{用内积生成的范数}
+
+% question 25 
+\begin{mdframed}
+    \begin{question}
+        至少举例两个线性赋范空间$X$，使得在$X$上的范数不能由内积生成
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+\section{\textsl{Hilbert}空间收敛性}
+
+% question 26
+\begin{mdframed}
+    \begin{question}
+        设$\{x_n\}$为内积空间$H$中点列，$x\in H$，若$\Vert x_n\Vert\rightarrow \Vert x\Vert$，且$\forall\ y\in H$，$(x_n,y)\rightarrow (x,y)\ (n\rightarrow \infty)$，证明：$x_n\rightarrow x\ (n\rightarrow \infty)$
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+% question 27
+\begin{mdframed}
+    \begin{question}
+        设$H$是\textsl{Hilbert}空间，$\{x_n\}\subset H$，满足$\sum_{n=1}^{\infty}\Vert x_n\Vert<\infty$，证明$\sum_{n=1}^{\infty}x_n$在$H$中收敛。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+\section{可分的\textsl{Hilbert}空间}
+
+% question 28
+\begin{mdframed}
+    \begin{question}
+        证明在可分的内积空间，任意标准正交系最多为一可数集
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+% question 29
+\begin{mdframed}
+    \begin{question}
+        证明在可分的\textsl{Hilbert}空间中，任一完备的标准正交系必定是可数集
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+\section{\textsl{Hilbert}空间正交系与正交基}
+
+% question 30
+\begin{mdframed}
+    \begin{question}
+        设$E_n$是$n$为实线性空间，$\{e_1,e_2,\cdots,e_n\}$是$E_n$的一个基，$(\alpha_{ij})(i,j=1,2,\cdots,n)$是正定矩阵，对$E_n$中的元素$x=\sum\limits_{i=1}^{n}x_ie_i$以及$y=\sum\limits_{i=1}^{n}y_ie_i$，定义
+        \begin{equation}
+            (x,y)=\sum_{i,j=1}^{n}x_i\alpha_{ij}y_j
+        \end{equation}
+
+        证明：$(\cdot,\cdot)$是$E_n$上的一个内积，反之，设$(\cdot,\cdot)$是$E_n$上的一个内积，则必定存在正定矩阵$(\alpha_{ij})$使得$(x,y)=\sum x_i\alpha_{ij} y_j$成立。
+    \end{question}
+\end{mdframed}
+
+\textsl{\textbf{分析}：(1)内积本质上是一个双线性函数，满足正定性，共轭对称性，线性性；$(2)$ 正定矩阵：如果一个$n\times n$的实对称矩阵是正定的，当且仅当对于所有的非零实系数向量$z$，都有$z^TMz>0$;}
+
+\textbf{proof.} 证明如下
+
+\textbf{step 1.} 首先证明$(\cdot,\cdot):E_n\times E_n\rightarrow \mathbb{R}$是$E_n$上的一个内积。将内积形式写成矩阵形式，令$A=(\alpha_{ij})_{n\times n}$
+
+\begin{equation}
+    (x,y)=xAy
+\end{equation}
+
+\begin{enumerate}[itemindent=2em]
+    \item 正定性：取$x\in E_n$，由于$A$是正定实对称矩阵
+    \begin{equation}
+        xAx^T\geqslant 0
+    \end{equation}
+
+    当且仅当$\Vert x\Vert=0$时等号满足
+    \item 线性性：
+    \begin{equation}
+        \begin{aligned}
+            & (\alpha x,\beta y)=(\alpha x)A(\beta y)=\alpha(xAy)\beta=a\\
+            & (x+z,y)=(x+z)Ay=xAy+zAy=(x,z)+(x,y)\\
+        \end{aligned}
+    \end{equation}
+    \item 对称性：由于$(\cdot,\cdot)$是一个双线性函数，输出是一个实数，转置前后结果不变，同时$A$对称，所以
+    \begin{equation}
+        (x,y)=xAy=(xAy)^T=y^TAx^T=(y,x)
+    \end{equation}
+\end{enumerate}
+
+\textbf{step 2.} 如果$(\cdot,\cdot)$是$E_n$上的一个内积，对于任意的$\mathbf{x},\mathbf{y}\in E_n$
+\begin{equation}
+    \begin{aligned}
+        (\mathbf{x},\mathbf{y})&=(\sum_{i=1}^{n}x_ie_i,\sum_{j=1}^{n}y_je_j)
+        &=\sum_{i=1}^{n}\sum_{j=1}^{n}x_i(e_i,e_j)y_j
+    \end{aligned}
+\end{equation}
+
+令$\alpha_{ij}=(e_i,e_j)$，再令
+\begin{equation}
+    A=\left[
+        \begin{array}{ccccc}
+            (e_1,e_1) & (e_1,e_2) & \cdots & (e_1,e_n) \\
+            (e_2,e_1) & (e_2,e_2) & \cdots & (e_2,e_n) \\
+            \vdots    & \vdots    & \ddots & \vdots    \\
+            (e_n,e_1) & (e_n,e_2) & \cdots & (e_n,e_n) \\
+        \end{array}
+    \right]
+\end{equation}
+
+下面只要证明$A$是一个正定矩阵，首先注意到$A$是一个实对称矩阵，如果$A$是一个正定矩阵，则$\forall\ \mathbf{z}\in E_n$
+\begin{equation}
+    \mathbf{z}A\mathbf{z}^T=\sum_{i=1}^{n}\sum_{j=1}^{n}z_i\alpha_{ij}z_j=(\mathbf{z},\mathbf{z})=\Vert \mathbf{z}\Vert^2>0(\mbox{由内积诱导范数})
+\end{equation}
+
+\textsl{PS:上面的矩阵$A$实系数下称为Gram矩阵。}
+
+$\Box$
+
+% question 31
+\begin{mdframed}
+    \begin{question}
+        称$H_n(t)=(-1)^ne^{t^2}\frac{d^n}{dt^n}e^{-t^2}$为\textsl{Hermite}多项式，令
+        \begin{equation}
+            e_n(t)=(2^nn!\sqrt{\pi})^{-\frac{1}{2}}e^{-\frac{t^2}{2}}H_n(t)\ \ \ \ (n=1,2,\cdots)
+        \end{equation}
+
+        证明$\{e_n\}$组成$L^2(-\infty,\infty)$中的一个完备标准正交基
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+% question 32
+\begin{mdframed}
+    \begin{question}
+        令$L_n(t)$为\textsl{Laguerre}函数$e^t\frac{d^n}{dt^n}(t^ne^{-t})$，证明$\{\frac{1}{n!}e^{-\frac{1}{2}}L_n(t)\}(n=1,2,\cdots)$组成的$L^2(0,\infty)$中的一个完备的标准正交基
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+\section{正交补空间}
+
+% question 33
+\begin{mdframed}
+    \begin{question}
+        设$M=\{x|x=\{\xi_n\}\in l^2,\xi_{2n}=0,n=1,2,\cdots\}$，证明$M$是$l^2$的闭子空间，且求出$M^\perp$
+    \end{question}
+\end{mdframed}
+
+\textsl{\textbf{分析：} 证明$l^p$空间完备性的时候，是证明$x=(\xi_1,\xi_2,\cdots)\in l^p$的每一个分量$\xi_i$在$\mathbb{C}$中的收敛性，根据点集拓扑学中积空间的讨论，$l^p$可以看作$\mathbb{C}\times \mathbb{C}\times \cdots$笛卡尔积的形式，根据点集拓扑学中积空间的讨论，如果$x$的分量$\xi_i$在$\mathbb{C}$中收敛，那么$x$在$l^p$收敛。} 
+
+\textbf{proof.} 首先证明$M$是$l^2$是闭集；首先$l^2$空间上的范数定义为
+\begin{equation}
+    \Vert x\Vert :=\left(\sum_{k=1}^{\infty} |\xi_k|^2\right)^\frac{1}{2}
+\end{equation}
+
+如果$M$是闭集，则对于任意$x\in M$，那么存在任意的$B(x,\varepsilon)$和$M$的交集都不为空，也就是说存在一个序列$\{x^{(k)}\}\in M$，使得
+\begin{equation}
+    \Vert x^{(k)}-x\Vert<\varepsilon,\ \ \ \forall\ \varepsilon>0
+\end{equation}
+
+其中$x^{(k)}=(\xi^{(k)}_1,0,\xi^{(k)}_3,0,\cdots)$，$x=(\xi_1,0,\xi_3,0,\cdots)$，根据依照范数收敛的定义，上面写成
+\begin{equation}
+    \left(\sum_{n=1}^{\infty} |\xi^{(k)}_{2n-1}-\xi_{2n-1}|^2\right)^\frac{1}{2}<\varepsilon
+\end{equation}
+
+同时知道$l^p$空间在范数拓扑的情况下可分，因此$l^p$空间的任意一个点都至少存在一个收敛到它的序列。假设存在$\{y^{(k)}\}\in l^2$刚好收敛到$x$，其中$y^{(k)}=(\xi^{(k)}_1,\xi^{(k)}_2,\xi^{(k)}_3,\xi^{(k)}_4,\cdots)$则
+
+\begin{equation}
+    \left(\sum_{n=1}^{\infty} |\xi^{(k)}_{n}-\xi_{n}|^2\right)^\frac{1}{2}<\varepsilon
+\end{equation}
+
+这相当于是填补了偶数项，所以
+\begin{equation}
+    \left(\sum_{n=1}^{\infty} |\xi^{(k)}_{2n-1}-\xi_{2n-1}|^2\right)^\frac{1}{2}< \left(\sum_{n=1}^{\infty} |\xi^{(k)}_{n}-\xi_{n}|^2\right)^\frac{1}{2}<\varepsilon
+\end{equation}
+
+所以对于任意的$x\in M$，包含$x$所有的开球$B(x,\varepsilon)\cap M\neq \emptyset$。所以$M$闭。
+
+下面求$M$的正交补空间。定义$l^2$上的内积为
+\begin{equation}
+    (x,y)=\sum_{n=1}^{\infty} \eta_n\overline{\xi_n}
+\end{equation}
+
+正交补空间的定义为
+
+\begin{equation}
+    M^\perp =\{x\in l^2|(x,y)=0,\forall\ y\in M\}
+\end{equation}
+
+令$x=(\xi_1,\xi_2,\cdots)\in l^2$，$y=(\eta_1,\eta_2,\cdots)\in M$，其中$y$的偶数项全都为$0$，我们来找$x$
+\begin{equation}
+    (x,y)=\sum_{n=1}^{\infty} \sum_{n=1}^{\infty} \eta_{2n-1}\overline{\xi_{2n-1}}=0
+\end{equation}
+
+因为奇数项全部为$0$，所以上面只有奇数项，而奇数项$\xi_i$又不全为$0$，所以上式如果对于任意的$y$都满足，当且仅当$x$在奇数的分量全部为$0$。所以
+\begin{equation}
+    M^\perp =\{x\in l^2|x=\{\xi_1,\xi_2,\cdots\},\xi_{2n-1}=0,n=1,2,\cdots\}
+\end{equation}
+
+$\Box$
+
+% question 34
+\begin{mdframed}
+    \begin{question}
+        设$X$是内积空间，$A\subset X$，证明$A^\perp=\overline{A}^\perp$
+    \end{question}
+\end{mdframed}
+
+\textsl{\textbf{分析}：注意正交补空间的定义是，在正交补空间中每一个元素和原子空间的每个元素都相互正交}
+
+\textbf{proof.} $A$的正交补空间定义为
+\begin{equation}
+    A^\perp=\{x\in X|(x,y)=0,\forall y\in A\}
+\end{equation}
+\begin{equation}
+    \overline{A}^\perp=\{x\in X|(x,y)=0,\forall y\in \overline{A}\}
+\end{equation}
+
+\begin{enumerate}[itemindent=2em]
+    \item 证明$A^\perp \subseteq \overline{A}^\perp$;
+
+    如果$A^\perp \subseteq \overline{A}^\perp$，则对于所有的$y\in A^\perp$，任意取在$X$中收敛的数列$\{x_k\}\subseteq A$，
+    \begin{equation}
+        (x_k,y)=0
+    \end{equation}
+
+    令$k\rightarrow \infty$，根据内积的连续性
+    \begin{equation}
+        \lim_{k\rightarrow \infty}(x_k,y)=\lim_{k\rightarrow \infty}(x_k,y)=(x,y)=0
+    \end{equation}
+
+    因为$\overline{A}$包含$A$和$A$的所有的极限点，所以$x\in \overline{A}$。也就是说$y\in \overline{A}^\perp$,由于$y$的任意性，所以
+    \begin{equation}
+        A^\perp\subseteq \overline{A}^\perp
+    \end{equation}
+
+    \item 证明$\overline{A}^\perp \subseteq A^\perp$;
+    
+    假设$y\in \overline{A}^\perp$，对于任意的$x\in \overline{A}$，都有
+    \begin{equation}
+        (x,y)=0
+    \end{equation}
+
+    由于$A\subseteq \overline{A}$，所以对于任意的$z\in A$，也都有
+    \begin{equation}
+        (z,y)=0
+    \end{equation}
+
+    也就是说$y\in A^\perp$，所以$\overline{A}^\perp \subseteq A^\perp$。
+\end{enumerate}
+
+综上所述，$A^\perp=\overline{A}^\perp$
+
+$\Box$
+
+% question 35
+\begin{mdframed}
+    \begin{question}
+        设$M,N$是内积空间$H$的子空间，$M\perp N$，$L=M\bigoplus N$，证明$L$是闭子空间的充分必要条件是$M,N$均为闭子空间(充分性部分假定$H$完备)。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+\section{\textsl{Fouries}级数}
+
+% question 36
+\begin{mdframed}
+    \begin{question}
+        试证：$\left\{\sqrt{\frac{2}{\pi}}\sin\ nt\right\}$构成$L^2[0,2\pi]$的正交基，但不是$L^2[-\pi,\pi]$的正交基。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+% question 37
+\begin{mdframed}
+    \begin{question}
+        设$H$表示如下的函数$x(t)$的全体
+        \begin{equation}
+            x(t)\in L[0,2\pi],x(t)\sim \frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos nt+b_n\sin nt)
+        \end{equation}
+
+        且
+        \begin{equation}
+            \sum_{n=1}^{\infty}n(a^2_n+b^2_n)<\infty
+        \end{equation}
+
+        令
+        \begin{equation}
+            \Vert x\Vert_H=\frac{1}{\pi}\left[\frac{a_0^2}{2}+\sum_{n=1}^{\infty}n(a^2_n+b^2_n)\right]^\frac{1}{2}
+        \end{equation}
+
+        证明$H$是\textsl{Hilbert}空间。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+\section{凸性}
+
+% question 38
+\begin{mdframed}
+    \begin{question}
+        赋范线性空间$X$被称为一致凸的，如果$X$中任意满足$\Vert x_n\Vert=\Vert y_n\Vert=1,\Vert x_n+y_n\Vert\rightarrow 2$的序列$\{x_n\},\{y_n\}$有$\Vert x_n-y_n\Vert\rightarrow 0$，证明：
+        \begin{enumerate}[itemindent=2em]
+            \item 任何内积空间都是一致凸的；
+            \item $C[a,b]$不是一致凸的；
+            \item $L^1[a,b]$不是一致凸的；
+            \item 一致凸赋范空间必然是严格凸的；
+        \end{enumerate}
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$
+
+\section{正交投影与最佳逼近}
+
+\begin{mdframed}
+    \begin{question}
+        证明在严格凸的赋范空间中，对于每个$xin X$，$x$关于任意闭子空间$Y$的最佳逼近都是唯一的。
+    \end{question}
+\end{mdframed}
+
+\begin{mdframed}
+    \begin{question}
+        设$H$是\textsl{Hilbert}空间，若$E\subset H$是线性子空间并且对于任意的$x\in H$，$x$在$E$上的投影存在，则$E$是闭的。
+    \end{question}
+\end{mdframed}
+
+\section{补充}
+
+%question 40
+\begin{mdframed}
+    \begin{question}
+        设$\{e_\alpha\}(\alpha\in I)$是内积空间$H$中的标准正交系，证明对于每个$x\in H$，$x$关于这个标准正交系的\textsl{Fouries}系数$\{(x,e_\alpha)|\alpha\in I\}$中最多有可数个不为零。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+$\Box$

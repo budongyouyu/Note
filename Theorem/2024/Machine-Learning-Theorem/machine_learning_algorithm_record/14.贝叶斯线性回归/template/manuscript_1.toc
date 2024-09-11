@@ -1,0 +1,18 @@
+\contentsline {chapter}{Preface}{i}{chapter*.1}%
+\contentsline {chapter}{Summary}{ii}{chapter*.2}%
+\contentsline {chapter}{Nomenclature}{iv}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Bayes Linear Regression Background}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}从概率密度函数的角度认识最小二乘估计}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}从概率密度函数的角度认识过拟合和正则化}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}小结}{2}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Inference问题}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Gaussian Distribution Proporty}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}模型建立}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}模型求解}{5}{section.2.3}%
+\contentsline {section}{\numberline {2.4}小结}{5}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Predict问题}{6}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Predict}{6}{section.3.1}%
+\contentsline {chapter}{References}{7}{chapter*.5}%
+\contentsline {chapter}{\numberline {A}Source Code Example}{8}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Task Division Example}{9}{appendix.B}%
+\contentsfinish 

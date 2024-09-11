@@ -1,0 +1,35 @@
+\chapter{代数学每周一题}
+
+\section{问题 2014S01}
+
+\begin{mdframed}
+    \begin{question}
+        设$f(x_1,x_2,\cdots,x_n)$是次数等于$2$的$n$元实系数多项式，$S$是使得\\$f(x_1,x_2,\cdots,x_n)$达到最大值或最小值的点的集合，若
+        $f(x_1,x_2,\cdots,x_n)$是关于未定元\\$x_1,x_2,\cdots,x_n$的对称多项式并且$S$为有限非空集合，证明：存在$b\in \mathbb{R}$，使得
+        \begin{equation}
+            S=\{\ (b,b,\cdots,b) \ \}
+        \end{equation}
+    \end{question}
+\end{mdframed}
+
+\begin{mdframed}[linewidth=0pt,backgroundcolor=gray!20]
+    \textsl{\textbf{对称多项式：}假设一个多项式$P(x_1,\cdots,x_n)$交换任意未定元后还是这个多项式本身，则称为对称多项式。}
+\end{mdframed}
+
+\textbf{solution.} 对称多项式可表述为
+\begin{equation}
+    f(x_1,x_2,\cdots,x_n)=a\sum_{i=1}^{n}x^2_i+2c\sum_{1\leq i<j\leq n} x_ix_j+d\sum_{i=1}^{n}x_i
+\end{equation}
+
+根据函数极值的必要条件：函数极值存在则导数为0。对$f(x_1,x_2,\cdots,x_n)$求导得
+\begin{equation}
+    \begin{cases}
+        & 2ax_1+2cx_2+\cdots+2cx_n=-d \\
+        & 2cx_1+2ax_2+\cdots+2cx_n=-d \\
+        &\ \ \ \ \ \  \vdots \ \ \\
+        & 2cx_1+2cx_2+\cdots+2ax_n=-d \\
+    \end{cases}
+\end{equation}
+
+
+$\Box$

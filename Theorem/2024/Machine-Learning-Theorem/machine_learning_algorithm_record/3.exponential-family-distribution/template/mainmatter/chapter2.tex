@@ -1,0 +1,47 @@
+\chapter{高斯分布}
+
+\section{高斯分布的指数族分布形式}
+
+把高斯分布写成指数族分布的形式
+
+\begin{equation}
+    P(x|\theta)=\frac{1}{\sqrt{2\pi}\sigma}exp\{-\frac{(x-\mu)^2}{2\sigma^2}\}
+\end{equation}
+
+写成指数族分布的形式是
+\begin{equation}
+    P(x|\theta)=exp\{\eta^T\phi(x)-A(\eta)\}
+\end{equation}
+
+其中配分函数$A(\eta)=-\frac{\eta_1^2}{4\eta_2}+\frac{1}{2}log(-\frac{x}{\eta})$
+，$\eta=(\eta_1,\eta_2)^T$
+
+\section{配分函数与充分统计量}
+
+\begin{equation}
+    exp(A(\eta))=\int h(x)\cdot exp(\eta^T\phi(x))dx
+\end{equation}
+
+结论：$A'(\eta)=E_{p(x|\eta)}[\phi(x)]$，$A''(\eta)=Var[\phi(x)]$
+
+$A(\eta)$是凸函数
+
+\subsection*{从极大似然的角度看充分统计量}
+
+从极大似然的角度来看这个$\eta$怎么求？
+
+\begin{eqnarray}
+    D=\{x_{1},x_2,\cdots,x_N\}
+\end{eqnarray}
+
+\begin{equation}
+    \eta_{MLE}=argmax\ log\{ P(D|\eta)\}
+\end{equation}
+
+结论：
+\begin{equation}
+    A'(\eta_{MLE})=\frac{1}{N}\sum_{i=1}^{N}\phi(x_i)
+\end{equation}
+
+充分统计量就体现在这里。
+

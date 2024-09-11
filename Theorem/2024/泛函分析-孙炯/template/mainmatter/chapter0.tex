@@ -1,0 +1,175 @@
+\chapter{\textsl{Lebesgue Measure} and $L^p$ \textsl{Space}}
+
+\section{外测度}
+
+我们试图用一些开集来覆盖集合，然后把每个盒子的体积都加起来用来描述集合的测度。
+
+\begin{mdframed}
+    \begin{define}
+        如果$\Omega$是集合，我们定义它的\textbf{外测度}$m^*(\Omega)$为
+        \begin{equation}
+            m^*(\Omega):=\inf\{\ \sum_{j=1}^{\infty}vol(B_j) : (B_j)_{j=1}^{\infty}\mbox{覆盖}\Omega \ \}
+        \end{equation}
+    \end{define}
+\end{mdframed}
+
+外测度的性质如下
+\begin{enumerate}[itemindent=2em]
+    \item (空集零性) $m^*(\emptyset)=0$;
+    \item (正性);
+    \item (单调性);
+    \item (有限次可加性);
+    \item (可数次可加性);
+    \item (平移不变性);
+\end{enumerate}
+
+\begin{mdframed}
+    \begin{proposition}
+        (闭集的外测度) 对于每个闭盒子
+        \begin{equation}
+            B=\prod_{i=1}^{n}[a_i,b_i]:=\{(x_1,\cdots,x_n)\in \mathbb{R}^n:x_i\in [a_i,b_i],i\leqslant i\leqslant n\}
+        \end{equation}
+
+        我们有
+        \begin{equation}
+            m^*(B)=\prod_{i=1}^{n}(b_i-a_i)
+        \end{equation}
+    \end{proposition}
+\end{mdframed}
+
+\textbf{proof.} $\Box$
+
+我们来计算$\mathbb{R}$的一维外测度，由于对于一切$r>0$，$(-r,r)\subset \mathbb{R}$
+\begin{equation}
+    m^*(\mathbb{R})\geqslant m^*((-r,r))=2r
+\end{equation}
+
+令$r\rightarrow \infty$，就得到$m^*(\mathbb{R})=\infty$。
+
+计算$\mathbb{Q}$的一维外测度，对于每个比例数$q$，单点集$\{q\}$有外测度$m^*(\{q\})=0$，所以
+\begin{equation}
+    m^*(\mathbb{Q})\leqslant \sum_{q\in \mathbb{Q}}m^*(\{q\})=\sum_{q\in \mathbb{Q}}0=0
+\end{equation}
+
+单位区间$[0,1]$的一维外测度是$1$。
+
+\section{外测度不是加性的}
+\begin{mdframed}
+    \begin{proposition}
+        (可数加性不成立) 存在$\mathbb{R}$的可数的互不相交的子集族$(A_j)_{j\in J}$，使得
+        \begin{equation}
+            m^*(\bigcup_{j\in J}A_j)\neq \sum_{j\in J}m^*(A_j)
+        \end{equation}
+    \end{proposition}
+\end{mdframed}
+\textbf{proof.} $\Box$
+
+\section{\textsl{Lebesgue}测度}
+
+\section{可测集}
+
+\begin{mdframed}
+    \begin{define}
+        (\textbf{Lebesgue可测}) 设$E$是$\mathbb{R}^n$的子集合，如果对于$\mathbb{R}^n$的每个子集$A$都成立
+        \begin{equation}
+            m^*(A)=m^*(A\cap E)+m^*(A\backslash E)
+        \end{equation}
+
+        则我们称$E$是\textbf{Lebesgue可测}或\textbf{可测的}。我们定义$m(E)=m^*(E)$
+    \end{define}
+\end{mdframed}
+
+换句话说，$E$可测指的是：当我们用$E$把任意集合$A$划分成两部分时，可加性保持。
+
+\begin{mdframed}
+    \begin{lemma}
+        可测集的性质
+        \begin{enumerate}[itemindent=2em]
+            \item 如果$E$可测，那么$\mathbb{R}^n\backslash E$也可测；
+            \item (平移不变性) 如果$E$是可测的，而且$x\in \mathbb{R}^n$，那么$x+E$也是可测的，并且$m(x+E)=m(E)$；
+            \item 如果$E_1$和$E_2$都是可测的，那么$E_1\cap E_2$和$E_1\cup E_2$也是可测的；
+            \item (\textsl{Boole}代数性质) 如果$E_1,\cdots,E_N$是可剩的，那么$\cup_{j=1}^N E_j$和$\cap_{j=1}^N E_j$是可测的；
+            \item 每个开盒子和每个闭盒子都是可测的；
+            \item 任何外测度为零的集合$E$都是可测的；
+        \end{enumerate}
+    \end{lemma}
+\end{mdframed}
+
+\textbf{proof.} $\Box$
+
+\begin{mdframed}
+    \begin{lemma}
+        (有限可加性) 设$(E_j)_{j\in J}$是互不相交的可测集的有限族，而$A$是任意的一个集合(不必可测)，那么
+        \begin{equation}
+            m^*(A\cap (\cup_{j\in J}E_j))=\sum_{j\in J}m^*(A\cap E_j)
+        \end{equation}
+
+        还有
+        \begin{equation}
+            m(\cup_{j\in J}E_j)=\sum_{j\in J}^{m(E_j)}
+        \end{equation}
+    \end{lemma}
+\end{mdframed}
+
+\textbf{proof.} $\Box$
+
+\begin{mdframed}
+    \begin{lemma}
+        (可数加性)
+    \end{lemma}
+\end{mdframed}
+
+\textbf{proof.} $\Box$
+
+\begin{mdframed}
+    \begin{lemma}
+        ($\sigma$代数性质)
+    \end{lemma}
+\end{mdframed}
+
+\textbf{proof.} $\Box$
+
+\begin{mdframed}
+    \begin{lemma}
+        每个开集可以写成可数个或有限个开盒子的并
+    \end{lemma}
+\end{mdframed}
+
+\textbf{proof.} $\Box$
+
+\begin{mdframed}
+    \begin{lemma}
+        (Borel性质) 每个开集以及每个闭集都是\textsl{Lebesgue可测集}
+    \end{lemma}
+\end{mdframed}
+
+\section{可测函数}
+
+\begin{mdframed}
+    \begin{define}
+        (可测函数) 设$\Omega$是$\mathbb{R}^n$的可测子集，并设$f:\Omega\rightarrow \mathbb{R}^m$是函数，如果每个开集$V\subseteq \mathbb{R}^m$的逆像$f^{-1}(V)$是可测的，则称$f$是可测的。
+    \end{define}
+\end{mdframed}
+
+\begin{mdframed}
+    \begin{lemma}
+        (连续函数是可测的)
+    \end{lemma}
+\end{mdframed}
+
+\textbf{proof.} $\Box$
+
+还有另一种描述可测函数的方式
+\begin{mdframed}
+    \begin{lemma}
+        (广义实数系中的可测函数) 设$\Omega$是$\mathbb{R}^n$的可测子集，并设$f:\Omega\rightarrow \mathbb{R}$是函数，那么$f$是可测的当且仅当对于每个实数$a$，$f^{-1}((a,\infty))$可测。
+    \end{lemma}
+\end{mdframed}
+
+\textbf{proof.} $\Box$
+
+\begin{mdframed}
+    \begin{lemma}
+        (可测函数序列的极限是可测函数)
+    \end{lemma}
+\end{mdframed}

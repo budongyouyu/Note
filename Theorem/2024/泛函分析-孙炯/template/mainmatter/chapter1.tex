@@ -1,0 +1,142 @@
+\chapter{\textsl{Distance Space}}
+
+\section{距离空间}
+
+我们在集合中定义描述\textbf{距离}的函数$d:X\times X\rightarrow \mathbb{R}$，$d$应该满足
+\begin{enumerate}[itemindent=2em]
+    \item 非负性；
+    \item 对称性；
+    \item 三角不等式；
+    \item 严格正：$d(x,y)=0$当且仅当$x=y$
+\end{enumerate}
+
+\section{开集与连续映射}
+
+分析学中连续性的定义其实就是拓扑连续定义加上度量的情况。
+
+\begin{mdframed}
+    \begin{theorem}
+        设$\mathcal{T}:(X,d)\rightarrow (X_1,d_1)$，$\mathcal{T}$是连续映射$\Longleftrightarrow$ 对于任意$(X_1,d_1)$中的开集，其原像在$(X,d)$中仍然是开集。
+    \end{theorem}
+\end{mdframed}
+
+\begin{enumerate}
+    \item \textsl{证明$\Rightarrow$}。
+    
+    设$S_1$是$(X_1,d_1)$中的开集，$S_1$的原像$S$是$(X,d)$中开集。所以存在开球$B(\mathcal{T}x_0,\varepsilon)\subset S_1$。由于$\mathcal{T}$连续，所以
+    \begin{equation}
+        \forall \varepsilon>0,\ \exists\ \delta>0,\ s.t.\ \forall x\in X,\ d(x,x_0)<\delta\rightarrow d_1(\mathcal{T}x,\mathcal{T}x_0)<\varepsilon
+    \end{equation}
+
+    所以对于任意$S_1$中的开球$B(\mathcal{T}x_0,\varepsilon)$，根据$\mathcal{T}$的连续性，存在$B(x_0,\delta)$，只要能证明这个开球属于$S$，由于$B(\mathcal{T},\varepsilon)$的任意性，
+    我们可以说明$S$是一个开集。下面我们证明$B(x_0,\delta)\subset S$。
+
+    如果$B(x_0,\delta)\nsubseteq S$，那么至少存在一点$x\in B(x_0,\delta)$，但$x\notin S$，那么$\mathcal{T}x\notin S_1$，则$\mathcal{T}x\notin B(Tx_0,\varepsilon)$
+    ，则$d_1(x,x_0)>\varepsilon$，这与$\mathcal{T}$的连续性矛盾。
+
+    因此对于所有的$S_1$中的开球，都能在$S$中找到开球$B(x_0,\delta)$，因此$S$是一个开集。
+
+    \item \textsl{证明$\Leftarrow$}
+    
+    对于任意$(X_1,d_1)$中的开集，其原像在$(X,d)$中仍然是开集。对于任意$B(\mathcal{T}x_0,\varepsilon)\in X_1$，$\mathcal{T}^{-1}B(Tx_0,\epsilon)$属于$X$中的一个开集，因此存在$B(x_0,\delta)\in \mathcal{T}^{-1}B(Tx_0,\epsilon)$，
+    即$\mathcal{T}B(x_0,\delta)\subset B(\mathcal{T}x_0,\varepsilon)$，则$\mathcal{T}$连续。
+
+\end{enumerate}
+
+$\Box$
+
+\begin{mdframed}
+    \begin{theorem}
+        设$X$是一个距离空间，$A\subset X$，则$A$是闭集当且仅当$A$中收敛点列$\{x_n\}\subset A$的极限属于$A$。
+    \end{theorem}
+\end{mdframed}
+\textbf{proof.}
+
+$\Box$
+
+\section{距离空间的可分性和列紧性}
+
+\subsection*{\textsl{可分距离空间}}
+
+设$A,B$是距离空间$X$中的点集，如果$A\subset \overline{B}$，则称$B$在$A$中\textbf{稠密}。因为$A\subset \overline{B}$，所以$x\in \overline{B}$，所以任意$x\in A$都存在一个开球$B(x,\varepsilon)$使得
+\begin{equation}
+    B(x,\varepsilon)\cap B\neq \emptyset
+\end{equation}
+
+也就是说$A$中的每一个点都可以用$B$中的点来逼近\footnote{注意是每一个点，以这个点为圆心的任意开球都和稠密集有交集}。如果$X$是距离空间，如果$X$中存在一个可数稠密子集，则称$X$是可分的，对于子集$A\subset X$，如果$X$中存在可数子集$B$，使得$B$在$A$中稠密，则称$A$是\textbf{可分的}。
+
+实数空间中，有理数是稠密的，有理数是可数的，任何一个实数都可以用有理数列来逼近。
+
+\begin{example}
+    $A=[0,1]$，$B$是$[0,1]$中全体有理数，$\overline{B}=[0,1]$，$A\subset \overline{B}$，所以$B$在$A$中稠密。
+\end{example}
+
+\begin{mdframed}
+    \begin{proposition}
+        距离空间$(X,d)$是可分的当且仅当存在$X$中的一个具有下列性质的可数集$\{x_n\}:$
+        \begin{equation}
+            \forall\ x\in X\ and\ \forall\ \varepsilon>0,\ \exists\ x_k\in \{x_n\},\ s.t.\ d(x_k,x)<\varepsilon
+        \end{equation}
+    \end{proposition}
+\end{mdframed}
+
+\textbf{proof.} 首先证明必要性。
+
+如果$(X,d)$是可分的，则存在一个可数稠密子集$D$，那么对于每一个$x\in X$，取可数集$\{\frac{1}{n}\}$，总存在一个开球$B(x,\frac{1}{n})$，
+\begin{equation}
+    B(x,\frac{1}{n})\cap D\neq \emptyset
+\end{equation}
+
+所以取$x_n\in B(x,\frac{1}{n})\cap D$，对于每个$n=1,2,\cdots$，我们都选择一个$x_n$，最终我们得到一个序列$\{x_k\}$，现在我们证明$\{x_k\}$收敛到$x$，由于$x_k$在求$B(x,\frac{1}{n})$内部，因此$x$到$x_k$的距离肯定小于球的半径，所以对于任意的$\varepsilon>0$，必然存在一个$N\in \mathbb{N}$，当$n>N$时
+\begin{equation}
+    d(x_n,x)\leqslant \frac{1}{n}<\varepsilon,
+\end{equation}
+
+下面是充分性证明。
+
+对于每个$x\in X$都存在一个数集$\mathcal{A}_k=\{x_k\}$，因此我们令$\mathcal{L}$为所有$x\in X$的这样的数集的集合，那么$\mathcal{L}=X$，则$\mathcal{L}$是$X$中一个可数稠密子集（因为每个$\{x_k\}$都可数）。
+
+$\Box$
+
+\textsl{关于必要性的证明，为什么我会选择$\{\frac{1}{n}\}$，因为我们想要构造一系列一个包一个越来越小的开球，每个开球里取一个点，}
+
+\subsection*{\textsl{列紧距离空间}}
+
+设$A$是距离空间$X$中的一个子集，如果$A$中的每一个无穷点列都有一个收敛子列，则称$A$为\textbf{列紧集合}，闭列紧集称为\textbf{自列紧集}。
+
+\begin{mdframed}
+    \begin{theorem}
+        设$X$是一个距离空间，$A\subset X$是列紧集，则$A$是有界集。
+    \end{theorem}
+\end{mdframed}
+
+\begin{mdframed}
+    \begin{theorem}
+        (\textbf{Arzela 定理}) $C[a,b]$中的子集$A$是列紧的当且仅当$A$中的函数满足
+        \begin{enumerate}[itemindent=2em]
+            \item 一致有界
+            \item 等度连续
+        \end{enumerate}
+    \end{theorem}
+\end{mdframed}
+
+
+\section{距离空间完备化}
+
+完备化的过程中，“扩充”一个空间$X$到$\overline{X}$，最大的困难就在于如何用原来空间中的元素来刻画新加进来的元素。
+\begin{mdframed}
+    \begin{theorem}
+        任何距离空间$(X,d)$都存在一个完备的距离空间$(\overline{X},\overline{d})$，使得$(X,d)$和$(\overline{X},\overline{d})$的稠密子集等距，且在等距的意义下，这样的空间$(\overline{X},\overline{d})$是唯一的，称$(\overline{X},\overline{d})$为$(X,d)$的完备化空间
+    \end{theorem}
+\end{mdframed}
+\textbf{proof.} 
+
+$\Box$
+
+\section{完备距离空间的应用}
+
+\subsection*{\textsl{闭球套定理}}
+
+\subsection*{\textsl{Banach不动点定理}}
+
+

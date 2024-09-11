@@ -1,0 +1,44 @@
+\chapter{高斯混合模型的参数估计:\\EM求解}
+
+EM其实是期望最大算法。
+
+\section{E-step}
+
+\begin{equation}
+    \begin{aligned}
+         Q(\theta,\theta^{(t)}&)=\int_{x}log\ P(x,z|\theta)\cdot P(z|x,\theta^{(t)})dz\\
+        & = \sum\limits_{i=1}^{N}\sum\limits_{z_i}\ log\ [P_{z_1}\cdot \mathcal{N}(x_i|\mu_{z_i},\varSigma_{z_i})]\cdot \frac{p_{z_i}\cdot \mathcal{N}(x_i|\mu_{z_i}^{(t)},\varSigma_{z_i}^{(t)})}{\sum\limits_{k=1}^{K}p^{(t)}_k\cdot \mathcal{N}(x_i|\mu_{z_i}^{(t)},\varSigma_{z_i}^{(t)})}\\
+        & = \sum\limits_{i=1}^{N}\sum\limits_{z_i}\ log\ [P_{z_1}\cdot \mathcal{N}(x_i|\mu_{z_i},\varSigma_{z_i})]\cdot P(z_i|x_i,\theta^{(t)})\\
+        & = \sum\limits_{i=1}^{N}\sum\limits_{z_i}\ log\ [P_{z_1}\cdot \mathcal{N}(x_i|\mu_{z_i},\varSigma_{z_i})]\cdot P(z_i=c_k|x_i,\theta^{(t)})\\
+        & = \sum\limits_{i=1}^{N}\sum\limits_{z_i}\ [log\ P_{z_1}+ log\  \mathcal{N}(x_i|\mu_{z_i},\varSigma_{z_i})]\cdot P(z_i=c_k|x_i,\theta^{(t)})\\
+    \end{aligned}
+\end{equation}
+
+转化为最优化问题
+\begin{equation}
+    \theta^{(t+1)}=arg\ \max\limits_{\theta}\ Q(\theta,\theta^{(t)})
+\end{equation}
+
+求$p^{(t+1)}_{k}$
+\begin{equation}
+    \begin{cases}
+        & p^{(t+1)}_{k}=arg\ \max\limits_{p_k}\sum\limits_{k=1}^{K}\sum\limits_{i=1}^{N}\ log\ p_k\cdot P(z_i=c_k|x_i.\theta^{(t)})\\
+        & s.t. \ \ \ \sum\limits_{k=1}^{K}p_k=1
+    \end{cases}
+\end{equation}
+
+\section{M-step}
+
+求$p^{(t+1)}=(p_1^{(t+1)},p_2^{(t+1)},\cdots,p_k^{(t+1)})$，
+
+\begin{eqnarray}
+    \begin{cases}
+        & \max\limits_{p}\ \sum\limits_{k=1}^{K}\sum\limits_{i=1}^{N}\ log\ p_k\cdot P(z_i=c_k|x_i,\theta^{(t)})\\
+        & s.t. \ \ \ \sum\limits_{k=1}^{K}p_k=1
+    \end{cases}
+\end{eqnarray}
+
+由拉格朗日乘子法，结论是
+\begin{equation}
+    p_k^{(t+1)}=\frac{1}{N}\sum\limits_{i=1}^{N}P(z_i=c_k|x_i,\theta^{(t)})
+\end{equation}

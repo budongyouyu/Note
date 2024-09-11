@@ -1,0 +1,11 @@
+\contentsline {chapter}{Preface}{i}{chapter*.1}%
+\contentsline {chapter}{Summary}{ii}{chapter*.2}%
+\contentsline {chapter}{Nomenclature}{iv}{chapter*.4}%
+\contentsline {section}{\numberline {0.1}分类问题}{1}{section.0.1}%
+\contentsline {section}{\numberline {0.2}条件独立性假设}{1}{section.0.2}%
+\contentsline {section}{\numberline {0.3}决策}{2}{section.0.3}%
+\contentsline {section}{\numberline {0.4}估计}{2}{section.0.4}%
+\contentsline {chapter}{References}{4}{chapter*.5}%
+\contentsline {chapter}{\numberline {A}Source Code Example}{5}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Task Division Example}{6}{appendix.B}%
+\contentsfinish 
