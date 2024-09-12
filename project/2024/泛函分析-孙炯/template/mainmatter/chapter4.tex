@@ -1,0 +1,330 @@
+\chapter{有界线性算子}
+
+\section{有界线性算子}
+
+\begin{mdframed}
+    \begin{define}(\textbf{有界线性算子})
+        设$X$,$X_1$是赋范空间，$\mathcal{L}(T)\subset X$是一个线性子空间，$T$是从$\mathcal{L}(T)$到$X_1$的映射，满足
+        \begin{equation}
+            \begin{aligned}
+                & T(x+y)=Tx+Ty \\
+                & T(\alpha x)=\alpha Tx\\
+            \end{aligned}
+        \end{equation}
+
+        其中$x,y\in \mathcal{L}(T)$，$\alpha\in \mathbb{K}$，则称$T$是从$X$到$X_1$的\textbf{线性算子}，$\mathcal{L}$称为$T$的定义域。
+    \end{define}
+\end{mdframed}
+
+\begin{mdframed}
+    \begin{define}
+        (\textbf{有界线性算子}) 设$T$是从$X$到$X_1$的线性算子，若存在常数$M>0$，使得
+        \begin{equation}
+            \Vert Tx\Vert_1\leqslant M\Vert x\Vert,\ \ \ \forall\ x\in X
+        \end{equation}
+
+        则称$T$为\textbf{有界线性算子}。
+    \end{define}
+\end{mdframed}
+
+有界线性算子把有界集映射成有界集。
+
+\subsection*{\textsl{对线性算子连续性的刻画}}
+
+\begin{mdframed}
+    \begin{theorem}
+        设$X$,$X_1$是赋范空间，$T$是从$X$到$X_1$的线性算子，如果$T$在$y$点连续，则$T$在$X$上连续。
+    \end{theorem}
+\end{mdframed}
+
+对于线性算子来说，一点连续意味着每个点都连续。
+
+\begin{mdframed}
+    \begin{theorem}
+        设$X,X_1$为赋范空间，$T$是从$X$到$X_1$的线性算子，则$T$是连续的当且仅当$T$是有界的。
+    \end{theorem}
+\end{mdframed}
+
+\section{有界线性算子赋范空间}
+
+我们定义所有$X\rightarrow X_1$有界线性算子组成的空间为$\mathcal{L}(X,X_1)$，尝试定义$\mathcal{L}(X,X_1)$的范数
+\begin{mdframed}
+    \begin{define}(\textbf{有界线性算子$T$的范数})
+        设$T$是从赋范空间$X$到$X_1$的有界线性算子，即存在$M>0$，使得
+        \begin{equation}
+            \Vert Tx\Vert \leqslant M\Vert x\Vert,\ \ \ \forall\ x\in X
+        \end{equation}
+
+        令
+        \begin{equation}
+            \Vert T\Vert =\sup\limits_{
+                 x\in X,
+                 x\neq 0
+           }\frac{\Vert Tx\Vert}{\Vert x\Vert}
+        \end{equation}
+
+        称为有界线性算子的范数。
+    \end{define}
+\end{mdframed}
+
+验证$\Vert T\Vert$作为范数的三个条件：正定性、齐次性、三角不等式。
+
+\section{有界线性算子赋范空间的收敛性和完备性}
+
+\subsection*{\textsl{一致收敛}}
+设$A_n,A\in \mathcal{L}(X,X_1)$，如果$\Vert A_n-A\Vert\rightarrow 0\ (n\rightarrow \infty)$，则称有界线性算子列$\{A_n\}$\textbf{按范数收敛到有界线性算子$A$}或者称\textbf{一致收敛到$A$}。
+
+\begin{mdframed}
+    \begin{theorem}
+        空间$\mathcal{L}(X,X_1)$中线性算子列按范数收敛等价于线性算子列在$X$中单位球面$S$上一致收敛。
+    \end{theorem}
+\end{mdframed}
+\textbf{proof.} $\Box$
+
+\subsection*{\textsl{逐点收敛}}
+
+\begin{mdframed}
+    \begin{define}(\textbf{逐点收敛})
+        设$T_n,T\in \mathcal{L}(X,X_1)\ (n=1,2,\cdots)$，如果$\forall\ x\in X$，$T_nx\rightarrow Tx\ (n\rightarrow \infty)$，即
+        \begin{equation}
+            \Vert T_nx-Tx\Vert \rightarrow 0\ (n\rightarrow \infty)
+        \end{equation}
+
+        则称$\{T_n\}$逐点收敛到$T$或称$\{T_n\}$强收敛到$T$。
+    \end{define}
+\end{mdframed}
+
+\subsection*{\textsl{完备性}}
+
+\begin{mdframed}
+    \begin{theorem}
+        设$X$是赋范空间，$X$是\textsl{Banach Space}，则$\mathcal{L}(X,X_1)$是\textsl{Banach Space}。
+    \end{theorem}
+\end{mdframed}
+
+\section{一致有界原理}
+
+首先引入一些概念，如果$E$不在$X$中任何非空开集中稠密，则$E$为\textbf{稀疏集合}。如果集合$E$可以表示为至多可数个疏集的并，即
+\begin{equation}
+    E=\bigcup_{n=1}^{\infty} E_n
+\end{equation}
+
+则称$E$为\textbf{第一纲集}，不是第一纲集的集合称为\textbf{第二纲集}
+
+\subsection*{\textsl{Baire纲定理}}
+
+\begin{mdframed}
+    \begin{theorem}
+        (\textbf{Baire纲定理}) 完备距离空间是第二纲集。
+    \end{theorem}
+\end{mdframed}
+
+\textbf{proof.}\hspace{0.5em} 反证法。如果不然，则
+\begin{equation}
+    X=\bigcup^{\infty}_{n=1}E_n
+\end{equation}
+
+其中$E_n(n=1,2,\cdots)$是疏集，于是
+\begin{enumerate}[itemindent=2em]
+    \item 对于任何开球$S$，$E_1$在$S$中不稠密$(S\nsubseteq \overline{E}_1)$，即存在$S$中的点不在$\overline{E}_1$中（和$\overline{E}_1$有正距离）。由于$S$
+    是开球，所以存在一个闭球$\overline{S}_1\subseteq S$，使得
+    \begin{equation}
+        \overline{S}_1\bigcap E_1=\emptyset\ \mbox{且$\overline{S}_1$的半径小于}1
+    \end{equation}
+
+    \item 同样，$E_2$在$S_1$中不稠密，存在$\overline{S}_2\subseteq S_1$使得
+    \begin{equation}
+        \overline{S}_2\bigcap E_2=\emptyset\ \mbox{且$\overline{S}_2$的半径小于}\frac{1}{2}
+    \end{equation}
+
+    \item 一直做下去，我们就得到闭球套
+    \begin{equation}
+        \overline{S}_1\supset  \overline{S}_2\supset \cdots\supset \overline{S}_n\supset\cdots\ \mbox{，且$\overline{S}_n$的半径小于}\frac{1}{2^{n-1}}
+    \end{equation}
+
+    \item 因$X$完备，$r_n\rightarrow 0$，由闭球套定理知存在唯一的点
+    \begin{equation}
+        x_0\in X, x_0\in\bigcap^{\infty}_{n=1}\overline{S}_n
+    \end{equation}
+
+    但$\overline{S}_n\cap E_n=\emptyset$，由于$\forall n$，$x_0\in \overline{S}_n$，所以$x_0\notin E_n$，这于$X\bigcup^{\infty}_{k=1}E_n$矛盾
+\end{enumerate}
+
+所以$X$不是第一纲集，即$X$是第二纲集。
+
+$\Box$. 
+
+\begin{mdframed}
+    \begin{proposition}
+        \textsl{Banach}空间就是第二纲集。
+    \end{proposition}
+\end{mdframed}
+
+\subsection*{\textsl{Banach-Steinhaus一致有界原则}}
+
+\begin{mdframed}
+    \begin{theorem}
+        (\textbf{\textsl{Banach-Steinhaus一致有界原则}})  设$\{T_\alpha\ |\ \alpha\in I\}$是\textsl{Banach}空间，$X$上到赋范空间$X_1$中的有界线性子族，如果$\forall\ x\in X$，
+        \begin{equation}
+            \sup_{\alpha} \Vert T_\alpha x\Vert <\infty
+        \end{equation}
+
+        则$\{\Vert T_\alpha\Vert\ |\ \alpha\in I\}$为有界集。
+    \end{theorem}
+\end{mdframed}
+
+\textbf{proof.} $\Box$
+
+\begin{mdframed}
+    \begin{theorem}
+        (\textbf{共鸣定理}) 如果$\{T_\alpha\ |\ \alpha\in I\}$是\textsl{Banach}空间$X$上到赋范空间$X_1$中的有界线性算子族，$\sup_{\alpha}\Vert T_\alpha\Vert=\infty$，则存在$x_0\in X$，使得
+        \begin{equation}
+            \sup_{\alpha\in I}\Vert T_\alpha x_0\Vert =\infty
+        \end{equation}
+    \end{theorem}
+\end{mdframed}
+
+共鸣定理实际上是\textsl{Banach-Steinhaus一致有界原则}的逆否命题。
+
+\subsection*{\textsl{强收敛意义下的完备性}}
+
+\subsection*{\textsl{共鸣定理的应用——Fourier级数的发散}}
+
+由一致有界原则，如果$\Vert f_n\Vert\rightarrow \infty\ (n\rightarrow \infty)$，则存在$x_0$，使得$\left|f_n(x_0)\right|\rightarrow \infty$发散，据此下面证明：存在连续函数，在它某一连续点$t_0$，其\textsl{Fourier级数}是发散的。
+
+\section{开映射定理和逆算子定理}
+
+设$T$是从线性空间$X$到线性空间$X_1$中的线性算子，如果存在$X_1$到$X$中的线性算子$T_1$使得
+\begin{equation}
+    \begin{aligned}
+        & x\in \mathcal{L}(T)\subset X,\ T_1Tx=x\\
+        & y\in \mathcal{R}(T)\subset X_1,\ TT_1y=y\\
+    \end{aligned}
+\end{equation}
+
+则称$T_1$为$T$的\textbf{逆算子}
+
+\subsection*{\textsl{开映射定理}}
+\begin{mdframed}
+    \begin{theorem}
+        设$T$是\textsl{Banach空间}$X$上到\textsl{Banach空间}$X_1$上的有界线性算子，则$T$是开映射。
+    \end{theorem}
+\end{mdframed}
+
+\subsection*{\textsl{逆算子定理}}
+
+\begin{mdframed}
+    \begin{theorem}
+        (\textbf{Banach 逆算子定理}) 设$T$是从\textsl{Banach空间}$X$上到\textsl{Banach空间}$X_1$上的一对一的有界线性算子，则$T$的逆算子存在，且$T^{-1}$有界。
+    \end{theorem}
+\end{mdframed}
+
+\textbf{proof.}\hspace*{0.5em} 
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+$\Box$
+
+\section{闭算子和闭图像定理}
+
+设$X,X_1$是赋范空间，$T$是从$X$到$X_1$到线性算子，积空间
+\begin{equation}
+    X\times X_1=\{(x,y)\ |\ x\in X,y\in X_1\}
+\end{equation}
+
+上定义范数：对于任意的$z=(x,y)\in X\times X_1$，令
+\begin{equation}
+    \Vert z\Vert=\Vert (x,y)\Vert =\Vert x\Vert+\Vert y\Vert
+\end{equation}
+
+可以验证$X\times X_1$是赋范空间，如果$X$和$X_1$是\textsl{Banach空间}，则$X\times X_1$也是\textsl{Banach空间}。
+\begin{equation}
+    G(T)=\{(x,Tx)\in X\times X_1\ |\ x\in \mathcal{L}(T) \}
+\end{equation}
+
+称为\textbf{算子T的图像}。如果$G(T)$在$X\times X_1$中是闭集，则$T$称为\textbf{闭算子}。
+\begin{mdframed}
+    \begin{theorem}
+        $T$是闭算子当且仅当$\forall\ \{x_n\}\subset \mathcal{L}(T)$，$x_n\rightarrow x\in X$以及$Tx_n\rightarrow y\in X_1$，必有$x\in \mathcal{L}(T)$且$y=Tx$。        
+    \end{theorem}
+\end{mdframed}
+\textbf{proof.}\hspace*{0.5em} 充分性：证明$\ \forall(x,y)\in \overline{G(T)}\Rightarrow (x,y)\in G(T)$。$\forall (x,y)\in \overline{G(T)}$，存在$(x_n,y_n)\in G(T)$使得
+\begin{equation}
+    (x_n,y_n)\rightarrow (x,y)\ (n\rightarrow \infty)
+\end{equation}
+
+因$(x_n,y_n)$在$T$的图像中，故$y_n=Tx_n$，即
+\begin{equation}
+    (x_n,Tx_n)\in G(T),\ \ (x_n,Tx_n)\rightarrow (x,y)\ (n\rightarrow \infty)
+\end{equation}
+
+根据乘积空间范数的定义
+\begin{equation}
+    \Vert x_n-x\Vert + \Vert Tx_n-y\Vert\rightarrow 0\ (n\rightarrow \infty)
+\end{equation}
+
+所以
+\begin{equation}
+    \Vert x_n-x\Vert\rightarrow 0,\ \Vert Tx_n-y\Vert\rightarrow 0\ (n\rightarrow \infty)
+\end{equation}
+
+即
+\begin{equation}
+    x_n\rightarrow x,\ \ Tx_n\rightarrow y
+\end{equation}
+
+由定理中的条件
+\begin{equation}
+    x\in \mathcal{D(T)},\ y=Tx
+\end{equation}
+
+故$(x,y)\in G(T)$，这就证明$T$是闭算子。
+
+必要性：即证明$\forall \{x_n\}\subset \mathcal{D}(T)$，$x_n\rightarrow x$，$Tx_n\rightarrow y\ (n\rightarrow \infty)$，则有$x\in \mathcal{D}(T)$，$y=Tx$.
+
+由条件
+\begin{equation}
+    \Vert x_n-x\Vert+\Vert tx_n-y\Vert \rightarrow 0\ (n\rightarrow \infty)
+\end{equation}
+
+因此
+\begin{equation}
+    (x_n,Tx_n)\rightarrow (x,y)
+\end{equation}
+
+因此$T$是闭的，即$G(T)$是闭的故$(x,y)\in G(T)$，即
+\begin{equation}
+    x\in \mathcal{D}(T),\ \ y=Tx
+\end{equation}
+
+$\Box$
+
+\begin{mdframed}
+    \begin{theorem}
+        (\textbf{闭图像定理}) 设$T$是\textsl{Banach空间}$X$到\textsl{Banach空间}$X_1$上的闭线性算子，则$T$是有界线性算子。
+    \end{theorem}
+\end{mdframed}
+
+\textbf{proof.}\hspace*{0.5em} 因为$X,X_1$是\textsl{Banach空间}，故$X\times X_1$是\textsl{Banach空间}。由于$T$是闭的，故$G(T)$是$X\times X_1$中的闭子空间，定义从$G(T)$上到$X$中的线性算子
+\begin{equation}
+    \tilde{T}:(x,Tx)\rightarrow x
+\end{equation}
+
+$\tilde{T}$是一对一在上的线性算子（因为$\mathcal{D}(T)=X$），所以$\tilde{T}^{-1}$存在，
+\begin{equation}
+    \tilde{T}^{-1}:x\rightarrow (x,Tx)
+\end{equation}
+
+由\textsl{Banach空间}逆算子定理，$\tilde{T}^{-1}:x\rightarrow (x,Tx)$是有界的。于是
+\begin{equation}
+    \Vert (x,Tx)\Vert=\Vert \tilde{T}^{-1}(x)\Vert\leqslant \Vert \tilde{T}^{-1}\Vert \Vert x\Vert
+\end{equation}
+
+因为$\Vert (x,Tx)\Vert=\Vert x\Vert+\Vert Tx\Vert$，所以
+\begin{equation}
+    \Vert Tx\Vert\leqslant (\Vert \tilde{T}^{-1}\Vert - 1)\Vert x\Vert
+\end{equation}
+
+$\Box$

@@ -1,0 +1,41 @@
+\chapter{采样方法}
+
+在\textsl{Inference Variational}中，我们的目的是给定数据$X$和隐变量$Z$的先验，根据观测数据推测后验，也就是$P(Z|X)$。
+
+但是很不幸的是$P(Z|X)$的计算非常复杂，我们大致采用两种思路去解决：\textsl{精确推断}和\textsl{近似推断}，精确推断无法得到我们想要的结果时，就会采用近似推断，而近似推断又可以分成两大类:
+\textsl{确定性近似}和\textsl{随机近似}。
+
+\begin{center}
+    \begin{forest}
+        forest scheme
+        [
+            [精确推断]
+            [近似推断
+                [确定性近似：Variational Inference]
+                [随机近似：MCMC]
+            ]
+        ]
+    \end{forest}
+\end{center}
+
+\textsl{蒙特卡洛方法(Monte Carlo Method)}是一种基于采样的随机近似算法，我们的目标是求解后验概率$P(Z|X)$，知道分布后，通常的目标是求解
+\begin{equation}
+    \mathbb{E}_{Z|X}[f(Z)]=\int_{Z}P(Z|X)f(Z)dZ=\approx \frac{1}{N}\sum_{i=1}^{N} f(z_i)
+\end{equation}
+
+问题就是我们知道了后验分布$P(Z|X)$，如何通过采样来使得$z^{(1)},z^{(2)},\cdots,z^{(N)}\sim P(Z|X)$？
+
+\section{概率分布采样}
+
+\section{拒绝采样}
+
+对目标分布$P(Z)$的采样非常困难，所以我们可以对一个比较简单的分布$q(Z)$进行辅助采样，我们可以设定一个\textsl{proposal distribution：q(Z)}。对于所有的$z$，保证$M\cdot q(z^i)\geqslant p(z^i)$，
+那么我们为什么要引入$M$呢？这是因为
+\begin{equation}
+    \int_ZP(Z)dZ=\int_Zq(Z)dZ=1
+\end{equation}
+
+要使得$q(z^i)\geqslant p(z^i)$
+
+\section{重要性采样}
+

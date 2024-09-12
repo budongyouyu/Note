@@ -1,0 +1,246 @@
+\chapter{Normed Vector Space Exescrise}
+
+\section{范数}
+
+\begin{mdframed}
+    \begin{question}
+        设线性空间$X$中定义的距离$d$满足平移不变性和相似性，即$d(x+z,y+z)=d(x,y),d(\alpha x,\alpha y)=|\alpha|d(x,y)$，
+        令$\Vert x\Vert=d(x,0)$，证明$(X,\Vert \cdot\Vert)$是赋范线性空间
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.} 如果$(X,\Vert\cdot\Vert)$是赋范线性空间，只要证明$\Vert\cdot\Vert$是$X$上的范数，只要证明满足三角不等式
+\begin{equation}
+    \begin{aligned}
+        \Vert x+z\Vert&=d(x+z,-z+z)\\
+        &=d(x,0)+d(-z,0)\\
+        &=d(x,0)-d(z,0)\leqslant d(x,0)+d(z,0)=\Vert x\Vert+\Vert z\Vert
+    \end{aligned} 
+\end{equation}
+
+PS：由两边之差小于第三边，两边之和大于第三边。
+
+$\Box$
+
+\section{\textsl{Banach}空间}
+
+\begin{mdframed}
+    \begin{question}
+        在$\mathbb{C}^n$中定义范数$\Vert x\Vert=\max_{i}|x_i|$，证明他是\textsl{Banach}空间。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.} 如果$\mathbb{C}^n$是\textsl{Banach}空间，则对于$\mathbb{C}^n$应该是完备的赋范空间，即$\mathbb{C}^n$中的所有\textsl{Cauchy}列都依范数收敛。
+因此只要证明：$\forall \varepsilon>0$，存在一个$N\in \mathbb{N}$，使得对于所有的$k,m>N$
+\begin{equation}
+    \Vert x_k-x_m\Vert\leqslant \varepsilon
+\end{equation}
+
+其中$x_k=(x^{(1)}_k,x^{(2)}_k,\cdots,x^{(n)}_k),x_m=(x^{(1)}_m,x^{(2)}_m,\cdots,x^{(n)}_m)\in \mathbb{C}^n$。下面我们来证明，根据问题范数的定义
+\begin{equation}
+    \Vert x_k-x_m\Vert=\max\limits_{i}\ (x^{(i)}_k-x^{(i)}_m)
+\end{equation}
+
+问题就变成了$\mathbb{C}$中\textsl{Cauchy}序列收敛性问题，由于$\mathbb{C}$是完备的，因此总存在这样一个$N$使得问题满足。
+
+$\Box$
+
+\begin{mdframed}
+    \begin{question}
+        设$(X,\Vert\cdot\Vert)$是赋范空间，$X\neq\{0\}$，证明$X$为$Banach$空间的充要条件是$X$中单位球面$S=\{x\in X\ |\ \Vert x\Vert=1\}$
+        是完备的。
+    \end{question}
+\end{mdframed}
+
+\textsl{\textbf{分析}：$(1)$ 假设$\{x_k\}\in S$是单位球面上的\textsl{Cauchy}列，有$\lim_{k\rightarrow \infty}x_k=x$，注意$Cauchy$列和收敛的区别。$(2)$ $X$中任意的向量相当于单位向量的缩放：$v=x/\Vert x\Vert$ }
+
+\textbf{proof.} 首先证明必要性。$X$是\textsl{Banach}空间，对于任意$S\subset X$上的\textsl{Cauchy}列，必然是收敛的。
+
+再证明充分性。我们证明$X$中所有的\textsl{Cauchy}列收敛，取$\{y_n\}$是$X$中一组\textsl{Cauchy}列，由于$S$是完备的，则$\forall\ \varepsilon>0$，总存在$n$满足
+\begin{equation}
+    \Vert x_n-x\Vert=\Vert \frac{y_n}{\Vert y_n\Vert}-x\Vert<\frac{\varepsilon}{\Vert y_n\Vert}
+\end{equation}
+
+根据范数的齐次性
+\begin{equation}
+    \Vert y_n-\Vert y_n\Vert\cdot x\Vert<\Vert y_n\Vert\cdot \frac{\varepsilon}{\Vert y_n\Vert}=\varepsilon
+\end{equation}
+
+$\Box$
+
+\begin{mdframed}
+    \begin{question}
+        设$H$是在直线$\mathbb{R}$上平凡可积，导数也平方可积的连续函数集合，对于每个$x\in H$，定义
+        \begin{equation}
+            \Vert x\Vert=\left(\int_{-\infty}^{\infty}|x(t)|^2dt+\int_{-\infty}^{\infty}|x'(t)|^2dt\right)
+        \end{equation}
+
+        证明$H$是\textsl{Banach}空间。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+\begin{mdframed}
+    \begin{question}
+        设$0<p<1$，考虑空间$L^p[0,1]$,其中
+        \begin{equation}
+            \Vert x\Vert=\int_{0}^{1}|x(t)|^pdt<\infty,\ \ x\in L^p[0,1]
+        \end{equation}
+
+        证明$\Vert x\Vert$不是$L^p[0,1]$上的范数，但$d(x,y)=\Vert x-y\Vert$是$L^p[0,1]$上的距离。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+\begin{mdframed}
+    \begin{question}
+        证明$l^p(1<p<\infty)$是可分的\textsl{Banach}空间。
+    \end{question}
+\end{mdframed}
+
+\textsl{\textbf{分析}：$(1)$ $l^p$空间定义为$p$次方可求和的数列，
+\begin{equation}
+    l^p=\{x=\{\xi_n\}\ |\ \sum\limits_{n=1}^{\infty}|\xi_n|^p<\infty\}
+\end{equation}
+$(2)$可分：空间$X$可分意味着$X$中存在可数稠密子集$D$，即$X=\overline{D}$，即对于任意$x\in X$，以$x$为圆心任意半径的开球和$D$都有交集，即对于$X$中的每一个点都能用$D$中的序列去逼近。
+$(3)$ $l^p$空间中可以赋予范数
+\begin{equation}
+    \Vert x\Vert_p=\left(\sum\limits_{n=1}^{\infty}|\xi_n|^p\right)^\frac{1}{p}
+\end{equation}
+}
+
+\textbf{proof.} 
+
+\begin{enumerate}[itemindent=2em]
+    \item 证明$l^p$是\textsl{Banach}空间；
+    
+    如果$l^p$是\textsl{Banach}空间，则它应该是完备赋范空间，即对于任意的$l^p$中的\textsl{Cauchy}列，应该依照范数收敛于$l^p$中的某个值。
+    ，考虑$l^p$空间中的一个\textsl{Cauchy}序列$\{x^{(n)}\}$，其中$x^{(n)}=(x^{(n)}_1,x^{(n)}_2,\cdots)$。所以对于$\forall\ \varepsilon>0$，
+    $\exists\ N$，使得$\forall\ m,n>N$有
+    \begin{equation}
+        \Vert x^{(m)}-x^{(n)}\Vert_p=\left(\sum_{i=1}^{\infty}|x^{(m)}_i-x^{(n)}_i|^p\right)^{\frac{1}{p}}<\varepsilon
+    \end{equation}
+
+    对于每个$i$，$\{x^{(n)}_i\}$是$\mathbb{C}$中的\textsl{Cauchy}序列，所以它在$\mathbb{C}$中收敛于某个$x_i$，
+    定义$x=(x_1,x_2,\cdots)$，我们证明$x\in l^p$，只要证明$x$的$p$次方可和。由于$x_1,x_2,\cdots$是有界数列，因此
+    $x\in l^p$
+
+    \item 证明$l^p$是可分的；设$D$为所有具有有限非零分量且分量是有理数的序列的集合，我们证明$D$在$l^p$中是可数稠密的。
+    \begin{enumerate}[itemindent=2em]
+        \item 由于有理数可数，所以$D$肯定是可数的；
+        \item 证明$D$是稠密的，即证明对于任意$x\in X$以及任意的$\varepsilon>0$，存在$y\in D$，使得$\Vert x-y\Vert<\varepsilon$。
+        \begin{equation}
+            \Vert x-y\Vert<\Vert x-x^{(n)}\Vert+\Vert x^{(n)}-y\Vert
+        \end{equation}
+    \end{enumerate}
+\end{enumerate}
+
+$\Box$
+
+\section{凸集}
+
+\begin{mdframed}
+    \begin{question}
+        证明线性空间$X$中任何一族凸集的交集仍然是凸集；对任何$x_0\in X$，凸集$A$"移动"$x_0$后所得的集合$A+x_0=\{y+x_0\ |\ y\in A\}$仍然是凸集
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+\section{等距同构}
+
+\begin{mdframed}
+    \begin{question}
+        设$C[0,1]$表示$(0,1]$上连续且有界的函数$x(t)$的全体，令
+        \begin{equation}
+            \Vert x\Vert=\sup\{x(t)\ |\ 0<t<1\}
+        \end{equation}
+
+        证明：
+        \begin{enumerate}[itemindent=2em]
+            \item $\Vert \cdot\Vert$是$C(0,1]$空间上的范数；
+            \item $l^\infty$与$C(0,1]$的一个子空间等距同构；
+        \end{enumerate}
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+\section{赋范空间上的连续映射}
+
+\begin{mdframed}
+    \begin{question}
+        设$X$是一个赋范线性空间，且$X$中任意线性映射$L:X\rightarrow Y$连续，证明$X$是有限维的。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+\section{最佳逼近}
+
+\begin{mdframed}
+    \begin{question}
+        设$(X,\Vert\cdot\Vert)$是赋范空间，$Y$是$X$的子空间，对于$x\in X$，令
+        \begin{equation}
+            \delta = d(x,Y)=\inf_{y\in Y}\Vert x-y\Vert
+        \end{equation}
+
+        如果存在$y_0\in Y$，使得$\Vert x-y_0\Vert=\delta$，称$y_0$是$x$的最佳逼近
+        \begin{enumerate}[itemindent=2em]
+            \item 证明：如果$Y$是$X$的有限维子空间，则对于每个$x\in X$，存在最佳逼近；
+            \item 证明：$Y$不是有限维空间时，上一个结论不成立；
+            \item 证明：对于每一个点$x\in X$，$x$关于子空间$Y$的的最佳逼近点集是凸集；
+        \end{enumerate}
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+\section{等价范数}
+
+\begin{mdframed}
+    \begin{question}
+        设$(X_1,\Vert x\Vert_1),(X_2,\Vert x\Vert_2)$是赋范空间，在乘积线性空间$X_1\times X_2$中定义
+        \begin{equation}
+            \Vert z\Vert_1=\Vert x_1\Vert_1+\Vert x_2\Vert_2,\ \Vert z\Vert_2=\max\{\Vert x_1\Vert_1,\Vert x_2\Vert_2\},
+        \end{equation}
+
+        其中$z\in X_1\times X_2$，$z=(x_1,x_2)$，证明$\Vert\cdot\Vert_1,\Vert\cdot\Vert_2$是$X_1\times X_2$上的等价范数。
+    \end{question}
+\end{mdframed}
+
+\section{赋范空间稠密与可分}
+
+\begin{mdframed}
+    \begin{question}
+        设$(X,\Vert\cdot\Vert)$是赋范空间，$X_0$是$X$中的稠密子集，证明对于每个$x\in X$，存在$\{x_n\}\subset X_0$，使得
+        \begin{equation}
+            X=\sum_{n=1}^{\infty}x_n
+        \end{equation}
+
+        并且
+        \begin{equation}
+            \sum_{n=1}^{\infty}\Vert x_n\Vert<\infty
+        \end{equation}
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+\begin{mdframed}
+    \begin{question}
+        设$X$是赋范线性空间，$M$是$X$闭子空间，证明若$X$可分，则$X/M$也可分。任取$y\in \overbrace{x}$，证明$\Vert \overbrace{x}\Vert=d(y,M)$。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}
+
+\begin{mdframed}
+    \begin{question}
+        设$X$是赋范线性空间，$M$是$X$的闭子空间，如果$M$以及$X/M$是\textsl{Banach}空间，证明$X$也是\textsl{Banach}空间。
+    \end{question}
+\end{mdframed}
+
+\textbf{proof.}

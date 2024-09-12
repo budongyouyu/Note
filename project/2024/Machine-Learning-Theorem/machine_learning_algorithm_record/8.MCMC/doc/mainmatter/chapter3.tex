@@ -1,0 +1,47 @@
+\chapter{采样}
+
+回到采样问题上来，我们想要求的是后验概率分布$P(Z)$，主要是为了求$P(Z)$概率分布下的·一个相关函数的期望
+\begin{equation}
+    \mathbb{E}_{P(Z)}[f(Z)]\approx \frac{1}{N}\sum_{i=1}^{N}f(z^{(i)})
+\end{equation}
+
+而我们是通过采样来得到$P(Z)\sim\{z^{(1)},z^{(2)},\cdots,z^{(N)}\}$样本点，$\pi(z)$是最终的平稳分布，可以看成我们这里的$P(Z)$，下面的问题就是求出概率转移矩阵$P_{ij}$。
+
+\section{采样的动机}
+
+这一小节的目的是我们要知道什么是采样动机。首先第一点很简单，采样本身就是发出常见的任务。
+
+拒绝采样和重要性采样都是借助一个$Q(z)$概率分布区逼近目标分布$P(z)$，通过$Q(z)$中进行采样来达到对$P(z)$采样的目的，而且在$Q(z)$中采样比较简单，当时如果$Q(z)$和$P(z)$直接的差距太大的话，采样效率会变得很低。
+
+而MCMC方法，我们主要介绍\textsl{Metroplis-Hastings}和\textsl{Gibbs}，我们主要是通过构建一个马尔可夫链逼近目标分布。
+
+\section{Metroplis-Hastings Sampling}
+
+而我们是通过采样来得到$P(Z)\sim\{z^{(1)},z^{(2)},\cdots,z^{(N)}\}$样本点，$\pi(z)$是最终的平稳分布，可以看成我们这里的$P(Z)$，下面的问题就是求出概率转移矩阵$P_{ij}$。
+
+我们怎么来找这个状态转移矩阵$P_{ij}$呢？首先先任意取一个$Q_{ij}$，因为随机选取所以并不满足\textsl{Detialed Balance}
+\begin{equation}
+    P(Z)Q(Z^*|Z)\neq P(Z^*)Q(Z|Z^*)
+\end{equation}
+
+那么怎么解决这个问题呢？我们可以在左右两边乘上一个因子来解决这个问题，这个因子使得$Q(Z^*|Z)\alpha(Z^*,Z)=P(Z\rightarrow Z^*)$，
+$Q(Z|Z^*)\alpha(Z^*,Z)=P(Z^*\rightarrow z)$，那么
+\begin{equation}
+    P(Z)\underbrace{Q(Z^*|Z)\alpha(Z^*,Z)}_{P(z\rightarrow z^*)}=P(Z^*)\underbrace{Q(Z|Z^*)\alpha(Z^*,Z)}_{P(z^*\rightarrow z)}
+\end{equation}
+
+而$\alpha(z,z^*)$定义为接受率，大小为
+\begin{equation}
+    \alpha(z,z^*)=\min\left( 1,\frac{P(Z^*)Q(Z|Z^*)}{P(Z)Q(Z|Z^*)} \right)
+\end{equation}
+
+所以$P(Z)$在转移矩阵$Q(Z|Z^*)\alpha(Z^*,Z)$是一个平稳分布，也就是一个马尔可夫链。通过这个马尔可夫链中采样就可以得到我们相应的样本数据点了。这就是\textsl{Metroplis Hastings Sampling}。
+
+\begin{enumerate}[itemindent=2em]
+    \item 从均匀分布中采样，$u\sim U(0,1)$;
+    \item 从$Q(Z|Z^{(i-1)})$中进行采样得到样本点$Z^*$;
+    \item 计算接受率
+    \item 如果$u\leqslant \alpha$，$Z^t=Z^*$，否则$Z^i=Z^{i-1}$
+\end{enumerate}
+
+\section{Gibbs Sampling}

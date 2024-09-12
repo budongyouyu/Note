@@ -1,0 +1,58 @@
+\chapter{Karush-Kuhn-Tucker条件}
+
+定理的具体内容在本文的第一节已经有了叙述，这里通过一个例子来描述。
+
+\section{例子}
+
+考虑下面的优化问题
+\begin{equation}
+    \begin{aligned}
+        & \min\ x_1^2+x_2^2\\
+        & s.t.\ \ \ x_1+x_2=1\\
+        & \ \ \ \ \ \ \ \ x_2\leqslant \alpha
+    \end{aligned}
+\end{equation}
+
+考虑\textsl{Lagrangigan}函数
+\begin{equation}
+    L(x_1,x_2,\lambda,\mu)=(x^2_1+x^2_2)-\lambda(x_1+x_2-1)-\mu(x_2-\alpha)
+\end{equation}
+
+令$\triangledown L=0$即可以将上面方程转化为KKT条件为
+\begin{equation}
+    \frac{\partial L}{\partial x_i}=0,\ \ \ i=1,2
+\end{equation}
+\begin{equation}
+    x_1+x_2=1
+\end{equation}
+\begin{equation}
+    x_2-\alpha\leqslant 0
+\end{equation}
+\begin{equation}
+    \mu \geqslant 0
+\end{equation}
+\begin{equation}
+    \mu(x_2-\alpha) = 0
+\end{equation}
+
+我们的目标是求出上面优化问题的解。
+
+\chapter{凸优化问题}
+
+凸优化问题是指越是最优化问题
+\begin{equation}
+    \begin{aligned}
+        & \min\limits_{\omega}\ f(\omega)\\
+        & s.t.\ \ \ g_i(\omega)\leqslant 0,\ \ \ i=1,2,\cdots,k\\
+        & \ \ \ \ \ \ \ \ h_i(\omega)\leqslant 0,\ \ \ i=1,2,\cdots,l\\
+    \end{aligned}
+\end{equation}
+
+其中目标函数$f(\omega)$和约束函数$g_i(\omega)$都是$\mathbb{R}^n$上的连续可微的凸函数，约束函数
+$h_i(\omega)$是$\mathbb{R}^n$上的仿射函数。
+
+当目标函数$f(\omega)$是二次函数且约束函数$g_i(\omega)$是仿射函数时，上述凸最优化问题称为凸二次规划问题。
+
+\section{凸二次规划问题解的存在性}
+
+\chapter{内积空间}

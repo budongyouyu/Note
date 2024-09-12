@@ -1,0 +1,195 @@
+\chapter{\textsl{Linear Nerual Network}}
+
+\section{Practice 1:线性回归}
+
+\begin{mdframed}
+    \begin{question}
+        假设有一些数据$x_1,\cdots,x_n\in \mathbb{R}$。找使得$\sum_{i}(x_i-b)^2$最小化的解析解，这个问题以及其解和正态分布有什么关系？
+    \end{question}
+\end{mdframed}
+
+令$\mathcal{L}(b)=\sum_{i}(x_i-b)^2$，则
+\begin{equation}
+    \begin{aligned}
+        \frac{\partial \mathcal{L}}{\partial b}&=-\sum_{i} 2(x_i-b)=0\\
+        &\Rightarrow b=\frac{x_1+\cdots,x_n}{n}
+    \end{aligned}
+\end{equation}
+
+即令解析解最小化的$b$刚好是数据集$x_1,\cdots,x_n$的均值。
+
+\begin{mdframed}
+    \begin{question}
+        推导使用平方误差的线性回归优化问题的解析解。
+        \begin{enumerate}[itemindent=2em]
+            \item 用向量表示法写出优化问题；
+            \item 计算损失对$\omega$的梯度；
+            \item 通过将梯度设为$0$、求解矩阵方程来找到解析解；
+            \item 什么时候可能比使用\textbf{随机梯度下降}更好？这种方法何时会失效？
+        \end{enumerate}
+    \end{question}
+\end{mdframed}
+
+%解答
+假设数据维度为$d$，共$n$组，因此数据矩阵为$X\in \mathbb{R}^{n\times d}$
+\begin{equation}
+    X=\left[\begin{array}{ccccc}
+        x_{11} & x_{21} & \cdots & x_{nd} \\
+        x_{12} & x_{22} & \cdots & x_{nd} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        x_{1d} & x_{2d} & \cdots & x_{nd} \\
+    \end{array}\right]
+\end{equation}
+
+预测值$y=[y_1,y_2,\cdots,y_n],y_i\in \mathbb{R},i\in 1,2,\cdots,n$，标签值$\hat{y}=[\hat{y}_1,\hat{y}_2,\cdots,\hat{y}_n],\hat{y_i}\in \mathbb{R},i\in 1,2,\cdots,n$
+\begin{equation}
+    y= X^T\omega
+\end{equation}
+
+其中$\omega=(\omega^1,\omega_2,\cdots,\omega_d)^T$。优化问题写成
+\begin{equation}
+    \mathcal{L}(\omega)=\sum_{i=1}^{n}(\omega^Tx_{i}-\hat{y}_i)^2=(X^T\omega -\hat{y})^T(X^T\omega-\hat{y})
+\end{equation}
+
+优化问题为
+\begin{equation}
+    \omega=\arg\ \min_{\omega}\ \mathcal{L}(\omega)
+\end{equation}
+
+计算损失函数的梯度：首先展开损失函数
+
+\begin{equation}
+    \begin{aligned}
+        \mathcal{L}(\omega)&=(\omega^TX-\hat{y}^T)(X^T\omega-\hat{y})\\
+        &=\omega^TXX^T\omega-\omega^TX\hat{y}-\hat{y}^TX^T\omega+\hat{y}^T\hat{y}
+    \end{aligned}
+\end{equation}
+
+求梯度，当梯度为$0$是为驻点
+
+\begin{equation}
+    \nabla_\omega \mathcal{L}=0
+\end{equation}
+
+注意到$XX^T$是对称矩阵，所以$XX^T=(XX^T)^T=(X^T)^TX^T=XX^T$
+\begin{equation}
+    \nabla_\omega \mathcal{L}=2XX^T\omega-2X\hat{y}=0
+\end{equation}
+
+所以解析解
+\begin{equation}
+    \omega=(XX^T)^{-1}(X\hat{y})
+\end{equation}
+%end
+
+\begin{mdframed}
+    \begin{question}
+       假定控制附加噪声$\varepsilon$的噪声模型是指数分布：$p(\varepsilon)=\frac{1}{2}exp(-|\varepsilon|)$，
+       \begin{enumerate}[itemindent=2em]
+        \item 写出模型$-log\ P(y|X)$下数据的负对数似然函数；
+        \item 试着写解析解；
+        \item 提出一种\textsl{SGD}算法来解决这个问题，那里可能出错？（当我们不断更新参数时，在驻点处会发生什么？）
+       \end{enumerate}
+    \end{question}
+\end{mdframed}
+
+%解答
+
+\begin{enumerate}
+    \item $\varepsilon$服从指数分布，带有噪声的线性回归问题为
+    \begin{equation}
+        y^{(i)}=\omega\cdot x^{(i)}+\varepsilon
+    \end{equation}
+
+    其中$\omega^{(i)}=(\omega^{(i)}_1,\omega^{(i)}_2,\cdots,\omega^{(i)}_n,b^{(i)})$，$x=(x^{(i)}_1,x^{(i)}_2,\cdots,x^{(i)}_n,1)$，$y^{(i)}\in \mathbb{R}$，我们可以观测到给定$x$的$y$的条件概率
+    \begin{equation}
+        p(y^{(i)}|x^{(i)})=\frac{1}{2}\exp{(-|y^{(i)}-\omega\cdot x^{(i)}|)}
+    \end{equation}
+    
+    所以构造似然函数
+    \begin{equation}
+        P(y|X)=\prod_{i=1}^{n}p(y^{(i)}|x^{(i)})=\prod_{i=1}^{n}\frac{1}{2}\exp{(-|y^{(i)}-\omega\cdot x^{(i)}|)}
+    \end{equation}
+    
+    其中$y^{(i)}=(y^{(1)},y^{(2)},\cdots,y^{(n)})$，$X=(x^{(1)},x^{(2)},\cdots,x^{(n)})$取对数不改变似然函数的单调性
+    \begin{equation}
+        \mathcal{L}(\omega)=-\log\ P(y|X)=-\sum_{i=1}^{n}\log\ \frac{1}{2}\exp{(-|y^{(i)}-\omega\cdot x^{(i)}|)}
+    \end{equation}
+    \item 解析解即求$\mathcal{L}(\omega)$负对数似然函数的最小值。展开$\mathcal{L}(\omega)$中的其中一项
+    \begin{equation}
+        -\log\ \frac{1}{2}\exp{(-|y^{(i)}-\omega\cdot x^{(i)}|)}=\log\frac{1}{2}+|\ y^{(i)}-\omega\cdot x^{(i)}\ |
+    \end{equation}
+
+    要上式子最小，只要绝对值项是最小，也就是说我需要去优化的函数变成了
+    \begin{equation}
+        \mathcal{L'}(\omega)=\sum_{i=1}^{n}\left|\ y^{(i)}-\omega\cdot x^{(i)}\ \right|
+    \end{equation}
+
+    \item 由于该损失函数在具有突变，所以没有办法求导。所以需要重新定义$\partial \mathcal{L}/\partial \omega$。
+    \begin{equation}
+        \frac{\partial \mathcal{L}}{\partial \omega}=
+        \begin{cases}
+            & -x^{(i)}\ \ \ y^{(i)}-\omega\cdot x^{(i)}>0\\
+            & x^{(i)}\ \ \ \ y^{(i)}-\omega\cdot x^{(i)}<0\\
+            & 0 \ \ \ \ \ y^{(i)}=\omega\cdot x^{(i)}
+        \end{cases}
+    \end{equation}
+
+    梯度下降
+    \begin{equation}
+        \omega \leftarrow \omega+\eta\cdot \frac{\partial \mathcal{L}}{\partial \omega}
+    \end{equation}
+\end{enumerate}
+
+\begin{mdframed}[backgroundcolor=gray!15]
+    \textbf{记录：} 在高斯噪声的假设下，最小化均方误差等价于对线性模型的极大似然估计，对于指数分布噪声，则是考虑绝对值误差。
+
+    最小均方误差($L_2$损失函数)的鲁棒性比较差，如果损失函数在驻点处的比较平缓，则梯度下降会收到比较大的干扰，绝对误差损失函数($L_1$)鲁棒性比较好，但是由于在$x=0$出是突变的，无法求导。
+\end{mdframed}
+
+
+%end
+
+\section{Practice 2:线性回归从零实现}
+
+\begin{mdframed}
+    \begin{question}
+        如果我们将权重初始化为零，会发生什么？
+    \end{question}
+\end{mdframed}
+
+\begin{mdframed}
+    \begin{question}
+        假设试图为电压和电流关系建立一个模型，自动微分可以用来学习模型的参数吗？
+    \end{question}
+\end{mdframed}
+
+\begin{mdframed}
+    \begin{question}
+        能基于普朗克定律使用广谱能量密度来确定物体的温度么？
+    \end{question}
+\end{mdframed}
+
+\begin{mdframed}
+    \begin{question}
+        计算二阶导数时可能会遇到什么问题？
+    \end{question}
+\end{mdframed}
+
+\begin{mdframed}
+    \begin{question}
+        为什么在\textsl{squared\_loss}函数中需要使用\textsl{reshape}函数
+    \end{question}
+\end{mdframed}
+
+\begin{mdframed}
+    \begin{question}
+        尝试使用不同的学习率，观察损失函数值下降的快慢
+    \end{question}
+\end{mdframed}
+
+\begin{mdframed}
+    \begin{question}
+        如果样本个数不能被批量整除，\textsl{data\_iter}函数的行为会有什么变化
+    \end{question}
+\end{mdframed}
