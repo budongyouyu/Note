@@ -105,11 +105,29 @@ $K:\mathcal{X}\times \mathcal{X}\rightarrow \mathbb{R}$称为\textbf{正定核}(
   \end{lemma}  
 \end{mdframed}
 
+\textbf{proof.}\hspace*{0.5em} 考虑矩阵
+\begin{equation}
+    \mathbf{K}=\left(
+        \begin{array}{cc}
+            K(x,x) & K(x,x') \\
+            K(x',x) & K(x',x') \\ 
+        \end{array}
+    \right)
+\end{equation}
+
+根据定义，$K$是\textsl{PDS}核，则$\mathbf{K}$是\textsl{SPSD}对于所有的$x,x'\in \mathcal{X}$。$mathbf{K}$的特征值的积$det(\mathbf{K})$必须是非负的，因此
+$K(x',x)=K(x,x')$，我们有
+\begin{equation}
+    det(\mathbf{K})=K(x,x)K(x',x')-K(x,x')^2>0
+\end{equation}
+
+$\Box$
+
 \begin{mdframed}
     \begin{theorem}
         令$K:\mathcal{X}\times \mathcal{X}\rightarrow \mathbb{R}$是一个\textsl{PDS}核，则存在一个\textsl{Hilbert Space}$\ \mathbb{H}$以及$\Phi:\mathcal{X}\rightarrow \mathbb{H}$，使得
         \begin{equation}
-            \forall x,x;\in \mathcal{X},\ \ K(x,x')=\left<\Phi(x),\Phi(x')\right>
+            \forall x,x'\in \mathcal{X},\ \ K(x,x')=\left<\Phi(x),\Phi(x')\right>
         \end{equation}
 
         $\mathbb{H}$有如下名为\textbf{再生}\textsl{（Reproducing）}的性质
@@ -121,7 +139,44 @@ $K:\mathcal{X}\times \mathcal{X}\rightarrow \mathbb{R}$称为\textbf{正定核}(
     \end{theorem}
 \end{mdframed}
 
-\textbf{proof.}\hspace{1em}
+\textbf{proof.}\hspace{1em} 对于任意的$x\in \mathcal{X}$，定义$\Phi:\mathcal{X}\rightarrow \mathbb{R}^\mathcal{X}$
+\begin{equation}
+    \forall\ x,x'\in \mathcal{X},\ \ \ K(x,x')=\left< \Phi(x),\Phi(x') \right>
+\end{equation}
+
+定义$\mathbb{H}_0$为$\Phi(x)$的线性组合的集合
+\begin{equation}
+    \mathbb{H}_0:=\left\{ \sum_{i\in I}a_i\Phi(x_i)\ :\ a_i\in \mathbb{R},x_i\in \mathcal{X},|I|<\infty \right\}
+\end{equation}
+
+在$\mathbb{H}_0\times \mathbb{H}_0$中引入一个运算$\left< \cdot,\cdot \right>$，对于所有的$f,g\in \mathbb{H}_0$，其中$f=\sum_{i\in I} a_i\Phi(x_i)$，$g=\sum_{j\in J} b_j\Phi(x_j')$
+\begin{equation}
+    \left<f,g\right>=\sum_{i\in I,j\in J} a_i b_j K(x_i,x_j')=\sum_{j\in J}b_j f(x_j')=\sum_{i\in I}a_j g(x_i)
+\end{equation}
+
+根据定义自然$\left< \cdot,\cdot \right>$是一个对称算子。最后两个等号展示$\left< f,g \right>$并不依赖于$f$和$g$的形式，以及显示$\left< \cdot,\cdot \right>$的双线性。对于任意$f=\sum_{i\in I} a_i\Phi(x_i)\in \mathbb{H}_0$，由于
+$K$是一个$PDS$核，我们有
+\begin{equation}
+    \left<f,f\right>=\sum_{i,j} a_i a_j K(x_i,x_j)\geqslant 0
+\end{equation}
+
+因此，$\left< \cdot,\cdot \right>$是一个双线性半正定型。更一般地，对于任意的$f_1,\cdots,f_m\in \mathbb{H}_0$，$c_1,c_2,\cdots,c_m\in \mathbb{R}$，
+\begin{equation}
+    \sum_{i,j=1}^{m}c_ic_j\left< f_i,f_j \right>=\left< \sum_{i=1}^{m}c_if_i,\sum_{j=1}^{m}c_jf_j \right>\geqslant 0
+\end{equation}
+
+因此，$\left< \cdot,\cdot \right>$是$\mathbb{H}_0$上的$PDS$核，因此，对于任意的$f\in \mathbb{H}_0$和任意的$x\in \mathcal{X}$，根据\textsl{Cauchy-Schwarz inequality}，我们写为
+\begin{equation}
+    \left< f,\Phi(x) \right>^2\leqslant \left<f,f\right>\left<\Phi(x),\Phi(x)\right>
+\end{equation}
+
+根据再生性：对于任意的$f=\sum_{i\in I}a_i\Phi(x_i)\in \mathbb{H}_0$，根据$\left<\cdot,\cdot\right>$的定义
+\begin{equation}
+    \forall x\in \mathcal{X},\ \ f(x)=\sum_{i\in I}a_i K(x_i,x)=\left<f,\Phi(x)\right>
+\end{equation}
+
+因此，对于所有的$x\in \mathcal{X}$，$|f(x)|^2\leqslant \left<f,f\right>K(x,x)$。这意味着$\left<\cdot,\cdot\right>$定义了一个$\mathbb{H}_0$上的内积，因此$\mathbb{H}_0$称为了一个\textsl{pre-Hilbert space}。
+下面只要对$\mathbb{H}_0$能完备化就能形成成$\mathbb{H}$。根据\textsl{Cauchy-Schwarz}不等式，对$\forall x\in \mathcal{X}$，$f\mapsto \left<f,\Phi(x)\right>$是\textsl{Lipschitz}的，因此是连续的，因此$\mathbb{H}_0$在$\mathbb{H}$中稠密。
 
 $\Box$
 
@@ -148,9 +203,77 @@ $\Box$
 
 \subsection*{\textsl{SVMs with PDS kernels}}
 
+由于一个\textsl{PDS}核暗示着定义一个内积，我们能延伸\textsl{SVM}
+\begin{equation}
+    \begin{aligned}
+        & \max_{\alpha}\sum_{i=1}^{m}\alpha_i-\frac{1}{2}\sum_{i,j=1}^{m}\alpha_i\alpha_j y_i y_j K(x_i,x_j) \\
+        & subject\ to:0\leqslant \alpha_i\leqslant C \wedge \sum_{i=1}^{m}\alpha_iy_i=0,\ i\in [m]
+    \end{aligned}
+\end{equation}
+
+假设的解$h$能写成
+\begin{equation}
+    h(x)=sgn\left(\sum_{i=1}^{m}\alpha_iy_iK(x_i,x)+b\right)
+\end{equation}
+
+其中$b=y_i-\sum_{j=1}^{m}\alpha_jy_jK(x_j,x_i),\forall x_i,0<\alpha_i<C$。我们能将优化问题重新写成向量的形式，通过$K$的核矩阵$\mathbf{K}$
+\begin{equation}
+    \begin{aligned}
+        & \max_{\alpha}\ 2\ \mathbf{1}^T\mathbf{\alpha}-(\mathbf{\alpha}\circ \mathbf{y})^T\mathbf{K}(\mathbf{\alpha}\circ \mathbf{y})\\
+        & subject\ to:\mathbf{0}\leqslant \mathbf{\alpha}\leqslant \mathbf{C}\wedge \mathbf{\alpha}^T\mathbf{y}=0
+    \end{aligned}
+\end{equation}
+
 \subsection*{\textsl{Representer theorem}}
 
+\begin{mdframed}
+    \begin{theorem}
+        令$K:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}$是一个\textsl{PDS}核，$\mathbb{H}$对应$RKHS$，则，对于任意的不减函数$G:\mathbb{R}\rightarrow \mathbb{R}$和任意的损失函数$L:\mathbb{R}^m\rightarrow \mathbb{R}\cup \{+\infty\}$，优化问题
+        \begin{equation}
+            \arg\min_{h\in \mathbb{H}} F(h)=\arg\min_{h\in \mathbb{H}} G(\Vert h\Vert_\mathbb{H})+L(h(x_1),\cdots,h(x_m))
+        \end{equation}
+
+        存在一个解的形式为
+        \begin{equation}
+            h^*=\sum_{i=1}^{m}\alpha_i K(x_i,\cdot)
+        \end{equation}
+
+        如果$G$在先前假设是增函数名，则任何解都是这样的形式。
+    \end{theorem}
+\end{mdframed}
+
+\textbf{proof.}\hspace{1em} 
+
+$\Box$
+
 \subsection*{Learning guarantees}
+
+\begin{mdframed}
+    \begin{theorem}
+        (\textbf{Rademacher complexity of kernel-based hypotheses}) 令$K:\mathcal{X}\times \mathcal{X}\rightarrow \mathbb{R}$是一个\textsl{PDS}核，$\Phi:\mathcal{X}\rightarrow \mathbb{R}$是一个关于$K$的特征映射。令$S\subseteq \{x:K(x,x)\leqslant r^2\}$是一个尺寸为$m$的例子，令
+        $\mathcal{H}=\{x\mapsto \left<\mathbf{w},\Phi(x)\right>:\ \Vert \mathbf{w}\Vert_{\mathbb{H}}\leqslant \Lambda,\exists \Lambda>0\}$，则
+        \begin{equation}
+            \hat{\mathcal{R}}_S(\mathcal{H})\leqslant \frac{\Lambda\sqrt{Tr[\mathbf{K}]}}{m}\leqslant \sqrt{\frac{r^2\Lambda^2}{m}}
+        \end{equation}
+    \end{theorem}
+\end{mdframed}
+
+\textbf{proof.}\hspace{1em} 
+
+$\Box$
+
+\begin{mdframed}
+    \begin{corollary}
+        (\textbf{Margin bounds for kernel-based hypotheses})令$K:\mathcal{X}\times \mathcal{X}\rightarrow\mathbb{R}$是一个\textsl{PDS}核，其中$r^2=\sup_{x\in \mathcal{X}}K(x,x)$，令$\Phi:\mathcal{X}\rightarrow \mathbb{H}$是一个关于$K$的特征映射，令$\mathcal{H}=\{\mathbf{x}\mapsto \mathbf{w}\cdot \Phi(x):\Vert \mathbf{w}\Vert_\mathbb{H}\leqslant \Lambda,\exists \Lambda\geqslant 0\}$。固定$\rho>0$，则对于任意的$\delta>0$
+        \begin{equation}
+            R(h)\leqslant \hat{R}_{S,p}(h)+2\sqrt{\frac{r^2\Lambda^2/\rho^2}{m}}+\sqrt{\frac{\log \frac{1}{\delta}}{2m}} \\
+        \end{equation}
+        \begin{equation}
+            R(h)\leqslant \hat{R}_{S,p}(h)+2\sqrt{\frac{Tr[\mathbf{K}]\Lambda^2/\rho^2}{m}}+3\sqrt{\frac{\log \frac{2}{\delta}}{2m}} \\
+        \end{equation}
+    \end{corollary}
+\end{mdframed}
+
 
 \section{Negative definite symmetric kernels}
 
