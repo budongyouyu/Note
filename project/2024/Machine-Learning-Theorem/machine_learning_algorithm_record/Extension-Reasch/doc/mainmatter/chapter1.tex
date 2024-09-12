@@ -23,7 +23,7 @@ $K:\mathcal{X}\times \mathcal{X}\rightarrow \mathbb{R}$称为$\mathcal{X}$上的
 $\Box$
 
 \textsl{Mercer’s condition}是核方法中的一个重要概念，尤其在支持向量机（SVM）和核函数的理论中
-起着关键作用。它为一个函数能否作为合法的核函数提供了数学判据。合法的核函数用于将数据从低维空间映射到高维空间，在高维空间中可以更加容易地进行线性分割。
+起着关键作用。它为一个函数能否作为合法的核函数提供了数学判据，保证了凸性从而保证可以取到全局最小值。合法的核函数用于将数据从低维空间映射到高维空间，在高维空间中可以更加容易地进行线性分割。
 
 \section{Positive definite symmetric kernel}
 
@@ -38,16 +38,72 @@ $K:\mathcal{X}\times \mathcal{X}\rightarrow \mathbb{R}$称为\textbf{正定核}(
 \end{equation}
 
 \begin{example}
-    (\textbf{Polynomial Kernels})
+    (\textbf{Polynomial Kernels})\hspace*{0.5em} 对任意常数$c>0$，一个$d$维多项式核定义为
+    \begin{equation}
+        \forall\ \mathbf{x},\mathbf{x}'\in \mathbb{R}^N,\ \ \ K(\mathbf{x},\mathbf{x}')=(\mathbf{x}\cdot \mathbf{x}'+c)^d
+    \end{equation}
+
+    多项式核将输入空间映射到更高维度的空间。作为一个例子，$N=2$的输入空间，二阶多项式多项式对应于下面的内积
+    \begin{equation}
+        \forall\ \mathbf{x},\mathbf{x}'\in \mathbb{R}^2,\ \ K(\mathbf{x},\mathbf{x}')=(x_1x_1'+x_2x_2'+c)^2=
+        \left[
+            \begin{array}{c}
+            x^2_1 \\
+            x^2_2 \\
+            \sqrt{2}x_1x_2\\
+            \sqrt{2c}x_1\\
+            \sqrt{2c}x_2\\
+            c
+        \end{array}\right]^T
+        \left[
+            \begin{array}{c}
+                x'^2_1 \\
+                x'^2_2 \\
+                \sqrt{2}x'_1x'_2\\
+                \sqrt{2c}x'_1\\
+                \sqrt{2c}x'_2\\
+                c
+            \end{array}
+        \right]
+    \end{equation}
+
+    可以看到这是维度为$6$的内积。
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.6]{figures/ploynaimal-kernel.png}
+        \caption{异或问题}
+    \end{figure}
+
+\end{example}
+
+\begin{example}
+    (\textbf{Gaussian Kernels})\hspace*{0.5em} 对于任意的常数$\sigma>0$，\textbf{高斯核}\textsl{(Gaussian kernel)}或者称\textbf{径向基函数}\textsl{(radial basis function, RBF)}定义为
+    \begin{equation}
+        \forall\ \mathbf{x},\mathbf{x}'\in \mathbb{R}^N,\ \ \ K(\mathbf{x},\mathbf{x}')=\exp\left(-\frac{\Vert \mathbf{x}'-\mathbf{x}\Vert}{2\sigma^2}\right)
+    \end{equation}
+
+    高斯核是应用中使用最为频繁的。我们将会证明高斯核是\textsl{PDS}核并且它能通过正规化的方法构造
+    \begin{equation}
+        K':(\mathbf{x},\mathbf{x}')\rightarrow \exp((\frac{(\mathbf{x}\cdot \mathbf{x}')^n}{\sigma^2}))
+    \end{equation}
 \end{example}
 \begin{example}
-    (\textbf{Gaussian Kernels})
-\end{example}
-\begin{example}
-    (\textbf{Sigmoid Kernels})
+    (\textbf{Sigmoid Kernels})\hspace*{0.5em} 对于任意的实数$a,b\geqslant 0$，一个\textsl{Sigmoid kernel}定义为
+    \begin{equation}
+        \forall\ \mathbf{x},\mathbf{x}'\in \mathbb{R}^N,\ \ \ K(\mathbf{x},\mathbf{x}')=\tanh\left(a(\mathbf{x}\cdot \mathbf{x}')+b\right)
+    \end{equation}
 \end{example}
 
 \section{Reproducing kernel Hilbert Space}
+
+\begin{mdframed}
+  \begin{lemma}
+    (\textbf{Cauchy-Schwarz inequality for PDs kernels})\hspace{0.5em} 令$K$为一个\textsl{PDS kernel}，则对于任意的$x,x'\in \mathcal{X}$
+    \begin{equation}
+        K(x,x')\leqslant K(x,x)K(x',x')
+    \end{equation}
+  \end{lemma}  
+\end{mdframed}
 
 \begin{mdframed}
     \begin{theorem}
@@ -88,3 +144,31 @@ $\Box$
     \end{theorem}
 \end{mdframed}
 
+\section{Kernel-Based Algorithms}
+
+\subsection*{\textsl{SVMs with PDS kernels}}
+
+\subsection*{\textsl{Representer theorem}}
+
+\subsection*{Learning guarantees}
+
+\section{Negative definite symmetric kernels}
+
+\begin{define}
+    (\textbf{Negative definite symmetric kernels, NDS}) 一个核$K:\mathcal{X}\times \mathcal{X}\rightarrow \mathbb{R}$称为\textbf{负定对称}\textsl{(Negative-definite symmetric,NDS)}，如果这是一个对称核并且$\forall\ (x_1,\cdots,x_m)\subseteq \mathcal{X}$以及$\mathbf{c}\in \mathbb{R}^{m\times 1}$，满足$\mathbf{1}^T\mathbf{c}=0$下面的关系成立
+    \begin{equation}
+        \mathbf{c}^T\mathbf{K}\mathbf{c}\leqslant 0
+    \end{equation}
+\end{define}
+
+明显地，如果$K$是\textsl{PDS}，则$-K$是\textsl{NDS}，但反过来一般来说并不成立。
+
+\begin{example}
+    (\textbf{Squared distance——NDS kernel})\hspace{0.5em} 
+\end{example}
+
+\section{Sequence Kernel}
+
+\subsection*{\textsl{Weighted transducers}}
+
+\subsection*{\textsl{Rational kernel}}
