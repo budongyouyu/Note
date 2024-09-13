@@ -96,6 +96,32 @@ $K:\mathcal{X}\times \mathcal{X}\rightarrow \mathbb{R}$称为\textbf{正定核}(
 
 \section{Reproducing kernel Hilbert Space}
 
+对于度量空间$(X,d)$，如果存在完备度量空间任何$(\hat{X},\hat{d})$，它的某个稠密子空间$X_0$和$X$等距同构，则$(\hat{X},\hat{d})$是$(X,d)$的一个
+等距同构。度量空间都有完备化，且完备化在等距同构的意义下唯一。
+
+\begin{equation}
+    d_1(x,y)=d_2(T(x),T(y)),\ \ \forall x,y\in X
+\end{equation}
+
+\begin{mdframed}
+    \begin{theorem}
+        任何度量空间$(X,d)$都存在一个完备度量空间$(\hat{X},\hat{d})$，使得$(X,d)$和$(\hat{X},\hat{d})$的一个稠子空间等距，且在等距的意义下，这样的空间$(\hat{X},\hat{d})$是唯一的，称
+        $(\hat{X},\hat{d})$是$(X,d)$的完备化空间。
+    \end{theorem}
+\end{mdframed}
+
+\textbf{proof.}\hspace{0.5em}
+\begin{enumerate}
+    \item \textsl{首先构造空间($\hat{X}$$\hat{d}$)}；
+    
+    把$(X,d)$中的\textsl{Cauchy}列全体表示为$\hat{X}$。如果两个\textsl{Cauchy}列
+
+    \item \textsl{证明$(X,d)$与$(\hat{X},\hat{d})$中的一个稠子空间等距}；
+    \item \textsl{证明$(\hat{X},\hat{d})$}完备；
+    \item \textsl{在等距的意义下，证明完备化空间的唯一性}；
+\end{enumerate}
+$\Box$
+
 \begin{mdframed}
   \begin{lemma}
     (\textbf{Cauchy-Schwarz inequality for PDs kernels})\hspace{0.5em} 令$K$为一个\textsl{PDS kernel}，则对于任意的$x,x'\in \mathcal{X}$

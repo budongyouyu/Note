@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.13)  12 SEP 2024 15:54
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.13)  13 SEP 2024 11:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2300,9 +2300,6 @@ Package microtype Info: Character `textquotedblleft ' is missing
 Package microtype Info: Character `textquotedblright ' is missing
 (microtype)             in font `TU/TimesNewRoman(0)/b/n/7.52812'.
 (microtype)             Ignoring protrusion settings for this character.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 100.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2314,8 +2311,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [2]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 127.
+(mdframed)              on input line 107.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 126.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 153.
 
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on input line 166.
+
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 166.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 12.64723pt, for example:
@@ -2324,6 +2337,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
 
 [3]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last split box is empty
+(mdframed)                You have to change the settings on input line 166.
+
 Package microtype Info: Character `textendash ' is missing
 (microtype)             in font `TU/TimesNewRoman(0)/m/n/12.045'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -2379,7 +2397,7 @@ Package microtype Info: Character `textquotedblright ' is missing
 (microtype)             in font `TU/Baskerville(0)/b/n/12.045'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `TU/Baskerville(0)/b/sl' in size <12.045> not available
-(Font)              Font shape `TU/Baskerville(0)/b/it' tried instead on input line 183.
+(Font)              Font shape `TU/Baskerville(0)/b/it' tried instead on input line 209.
 Package microtype Info: Character `textendash ' is missing
 (microtype)             in font `TU/Baskerville(0)/b/it/12.045'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -2400,14 +2418,23 @@ Package microtype Info: Character `textquotedblright ' is missing
 (microtype)             Ignoring protrusion settings for this character.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 186.
+(mdframed)              on input line 212.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 194.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 230.
+(mdframed)              on input line 220.
 
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on input line 226.
+
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 226.
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 226.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 12.64723pt, for example:
@@ -2418,10 +2445,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [4]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 252.
+(mdframed)              on input line 256.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 266.
+(mdframed)              on input line 278.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2430,7 +2457,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
 
-[5]) (./mainmatter/chapter2.tex
+[5]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 292.
+) (./mainmatter/chapter2.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 12.64723pt, for example:
@@ -2512,10 +2543,10 @@ Package logreq Info: Writing requests to 'manuscript_1.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 68635 strings out of 476683
- 1689160 string characters out of 5804047
- 2693113 words of memory out of 5000000
- 87850 multiletter control sequences out of 15000+600000
+ 68662 strings out of 476683
+ 1690991 string characters out of 5804047
+ 2693139 words of memory out of 5000000
+ 87877 multiletter control sequences out of 15000+600000
  519310 words of font info for 131 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  114i,12n,117p,1610b,4919s stack positions out of 10000i,1000n,20000p,200000b,200000s
